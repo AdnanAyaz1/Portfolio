@@ -1,6 +1,6 @@
 import { Particles } from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
-import React, { useCallback } from 'react';
+import React, { useCallback, memo } from 'react';
 
 const ParticlesContainer = () => {
   const particlesInit = useCallback(async (engine) => {
@@ -22,12 +22,11 @@ const ParticlesContainer = () => {
             value: '',
           },
         },
-        fpsLimit: 120,
+        fpsLimit: 60,
         interactivity: {
           events: {
             onClick: {
               enable: false,
-              mode: 'push',
             },
             onHover: {
               enable: true,
@@ -36,9 +35,6 @@ const ParticlesContainer = () => {
             resize: true,
           },
           modes: {
-            push: {
-              quantity: 90,
-            },
             repulse: {
               distance: 200,
               duration: 0.4,
@@ -57,7 +53,7 @@ const ParticlesContainer = () => {
             width: 1,
           },
           collisions: {
-            enable: true,
+            enable: false,
           },
           move: {
             direction: 'none',
@@ -66,7 +62,7 @@ const ParticlesContainer = () => {
               default: 'bounce',
             },
             random: false,
-            speed: 1,
+            speed: 0.8,
             straight: false,
           },
           number: {
@@ -74,7 +70,7 @@ const ParticlesContainer = () => {
               enable: true,
               area: 800,
             },
-            value: 80,
+            value: 50,
           },
           opacity: {
             value: 0.5,
@@ -83,7 +79,7 @@ const ParticlesContainer = () => {
             type: 'circle',
           },
           size: {
-            value: { min: 1, max: 5 },
+            value: { min: 1, max: 3 },
           },
         },
         detectRetina: true,
@@ -92,4 +88,5 @@ const ParticlesContainer = () => {
   );
 };
 
-export default ParticlesContainer;
+// Memoize the component to prevent unnecessary re-renders
+export default memo(ParticlesContainer);

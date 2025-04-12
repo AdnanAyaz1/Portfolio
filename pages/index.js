@@ -1,9 +1,17 @@
 // components
 import Transition from '../components/Transition';
-import ParticlesContainer from '../components/ParticlesContainer';
 import ProjectsBtn from '../components/ProjectsBtn';
 import Avatar from '../components/Avatar';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
+import { Suspense } from 'react';
+import Loading from '../components/Loading';
+
+// Dynamically import the heavy Particles component
+const ParticlesContainer = dynamic(() => import('../components/ParticlesContainer'), {
+  ssr: false,
+  loading: () => <Loading />
+});
 
 // framer motion
 import { motion } from 'framer-motion';
@@ -12,13 +20,16 @@ import { motion } from 'framer-motion';
 import { fadeIn } from '../variants';
 
 // typewriter effect
-import Typewriter from 'typewriter-effect';
+const TypewriterComponent = dynamic(() => import('typewriter-effect'), {
+  ssr: false
+});
 
 const Home = () => {
   return (
-    <div className='bg-primary/60 h-full '>
-      {/* particles */}
-      <ParticlesContainer />
+    <div className='bg-primary/60 h-full'>
+      <Suspense fallback={<Loading />}>
+        <ParticlesContainer />
+      </Suspense>
       {/* text */}
       <div className='w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10'>
         <div className='text-center flex flex-col justify-center xl:pt-40 xl:text-left h-full container mx-auto'>
@@ -31,7 +42,7 @@ const Home = () => {
             className='h1'>
             Hi, I'm{' '}
             <span className='text-accent'>
-              <Typewriter
+              <TypewriterComponent
                 options={{
                   strings: [
                     'Adnan Ayaz',
@@ -41,6 +52,7 @@ const Home = () => {
                   ],
                   autoStart: true,
                   loop: true,
+                  delay: 50
                 }}
               />
             </span>
@@ -70,7 +82,7 @@ const Home = () => {
         </div>
       </div>
       {/* image */}
-      <div className='w-[1200px] h-full absolute right-0 bottom-0 '>
+      <div className='w-[1200px] h-full absolute right-0 bottom-0'>
         <div className='bg-none xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0'>
         </div>
         {/* avatar */}

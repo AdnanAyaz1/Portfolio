@@ -9,7 +9,7 @@ import {
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { FreeMode, Pagination } from 'swiper';
+import { FreeMode as FreeModeModule, Pagination as PaginationModule } from 'swiper/modules';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -57,7 +57,7 @@ const ServiceSlider = () => {
       pagination={{
         clickable: true,
       }}
-      modules={[FreeMode, Pagination]}
+      modules={[FreeModeModule, PaginationModule]}
       className='h-[240px] sm:h-[340px]'
     >
       {serviceData.map((item, index) => {

@@ -1,16 +1,16 @@
 // import swiper react components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import Image from 'next/image';
 
 // import swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 // import required modules
-import { Pagination } from 'swiper';
+import { Pagination as PaginationModule } from 'swiper/modules';
 
 // icons
 import { BsArrowRight } from 'react-icons/bs';
-import { useState } from 'react';
 
 // work slider data
 export const workSlider = {
@@ -49,13 +49,12 @@ export const workSlider = {
 const WorkSlider = () => {
   return (
     <div>
-      {/* slider */}
       <Swiper
         spaceBetween={10}
         pagination={{
           clickable: true,
         }}
-        modules={[Pagination]}
+        modules={[PaginationModule]}
         className='h-[280px] sm:h-[480px]'
       >
         {workSlider.slides.map((slide, index) => {
@@ -70,7 +69,16 @@ const WorkSlider = () => {
                     >
                       <div className='flex items-center justify-center relative overflow-hidden group'>
                         {/* image */}
-                        <img src={image.path} alt={image.title} width={500} height={300} />
+                        <Image
+                          src={image.path}
+                          alt={image.title}
+                          width={500}
+                          height={300}
+                          quality={90}
+                          priority={index === 0}
+                          className='object-cover w-full h-full'
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        />
                         {/* overlay gradient */}
                         <div className='absolute inset-0 bg-gradient-to-l from-transparent to-[#4a22bd] opacity-0 group-hover:opacity-80 transition-all duration-700'></div>
                         {/* title */}
