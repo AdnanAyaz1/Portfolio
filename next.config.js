@@ -13,6 +13,7 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     optimizePackageImports: ['framer-motion', 'react-icons'],
+    prefetchPages: true,
   },
   webpack: (config, { dev, isServer }) => {
     // Bundle optimization
@@ -49,6 +50,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  poweredByHeader: false,
 }
 
 module.exports = nextConfig
