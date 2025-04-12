@@ -8,7 +8,7 @@ import Transition from '../../components/Transition';
 
 const Work = () => {
   return (
-    <div className='h-full bg-primary/30 py-36 flex items-center'>
+    <div className='h-full bg-primary/30 py-36 flex items-center mb-24'>
       <Transition />
       <Circles />
       <div className='container mx-auto'>
