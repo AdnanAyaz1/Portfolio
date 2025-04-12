@@ -1,0 +1,11 @@
+<svg width="270" height="34" viewBox="0 0 270 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <style>
+            .first-name { font-family: 'Arial', sans-serif; font-weight: 600; letter-spacing: -0.5px; }
+            .last-name { font-family: 'Arial', sans-serif; font-weight: 200; letter-spacing: 0.5px; }
+        </style>
+    </defs>
+    <text x="10" y="25" class="first-name" fill="white" font-size="26">adnan</text>
+    <text x="100" y="25" class="last-name" fill="white" font-size="24">ayaz</text>
+    <circle cx="245" cy="17" r="4" fill="#F13024"/>
+</svg>
