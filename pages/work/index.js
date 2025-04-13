@@ -31,7 +31,7 @@ const Work = () => {
               exit='hidden'
               className='mb-4 max-w-[400px] mx-auto lg:mx-0'
             >
-              I've had the pleasure of working on various exciting projects. Each one represents a unique challenge and creative solution.
+              These are my personal projects showcasing my skills and passion for development. For potential employers, I can also share my professional work from organizations I've collaborated with. Each project here represents a unique challenge and creative solution.
             </motion.p>
           </div>
 
