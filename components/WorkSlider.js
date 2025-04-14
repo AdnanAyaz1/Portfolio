@@ -24,12 +24,6 @@ const projectsData = {
       link: 'https://github.com/AdnanAyaz1/DevFlow_Prisma'
     },
     {
-      title: 'MessengerPrisma',
-      path: '/messenger.png',
-      description: 'Real-time messaging app with group chats and file sharing',
-      link: 'https://github.com/AdnanAyaz1/MessengerPrisma'
-    },
-    {
       title: 'MotoArena AI',
       path: '/moto.png',
       description: 'AI-powered car marketplace with Gemini API integration',
