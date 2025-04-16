@@ -19,7 +19,7 @@ const projectsData = {
   "Full-stack": [
     {
       title: 'DevFlow - Q&A Platform',
-      path: '/devflow.jpg',
+      path: '/DEVFLOW.png',
       description: 'Full-stack StackOverflow clone with Q&A, voting system, and markdown editor',
       link: 'https://github.com/AdnanAyaz1/DevFlow_Prisma'
     },
@@ -100,6 +100,8 @@ const WorkSlider = () => {
                 alt={project.title}
                 fill
                 quality={90}
+                placeholder="blur"
+                blurDataURL={project.path}
                 priority={index === 0}
                 className="object-cover object-top"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
