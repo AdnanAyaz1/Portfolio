@@ -8,7 +8,7 @@ import Transition from '../../components/Transition';
 
 const Services = () => {
   return (
-    <div className='h-full bg-primary/30 py-36 flex items-center mb-24'>
+    <div className='h-full bg-primary/30 py-16 sm:py-24 xl:py-36 flex items-center mb-24'>
       <Transition />
       <Circles />
       <div className='container mx-auto'>
@@ -29,7 +29,7 @@ const Services = () => {
               initial='hidden'
               animate='show'
               exit='hidden'
-              className='mb-4 max-w-[400px] mx-auto lg:mx-0'
+              className='mb-4 max-w-[400px] mx-auto lg:mx-0 px-4'
             >
               I offer a wide range of digital services, from design to development, helping businesses establish their online presence effectively.
             </motion.p>

@@ -70,16 +70,16 @@ const Contact = () => {
   return (
     <div className='h-full bg-primary/30 mb-24'>
       <Transition />
-      <div className='container mx-auto py-32 text-center xl:text-left flex items-center justify-center h-full'>
+      <div className='container mx-auto py-16 sm:py-24 xl:py-32 text-center xl:text-left flex items-center justify-center h-full'>
         {/* text & form */}
-        <div className='flex flex-col w-full max-w-[700px]'>
+        <div className='flex flex-col w-full max-w-[700px] px-4'>
           {/* text */}
           <motion.h2 
             variants={fadeIn('up', 0.2)}
             initial='hidden'
             animate='show'
             exit='hidden'
-            className='h2 text-center mb-12'
+            className='h2 text-center mb-8 sm:mb-12'
           >
             Let's <span className='text-accent'>connect.</span>
           </motion.h2>
@@ -131,7 +131,7 @@ const Contact = () => {
 
             {/* form */}
             <form onSubmit={handleSubmit} className='flex-1 flex flex-col gap-y-4'>
-              <div className='flex gap-x-4'>
+              <div className='flex flex-col sm:flex-row gap-y-4 sm:gap-x-4'>
                 <input
                   type='text'
                   name='name'

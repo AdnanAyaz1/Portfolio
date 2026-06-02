@@ -1,33 +1,41 @@
-// import swiper react components
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode, Pagination, Navigation } from 'swiper/modules';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-// import swiper styles
 import 'swiper/css';
+import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
-// import required modules
-import { Pagination as PaginationModule } from 'swiper/modules';
-
-// icons
 import { BsArrowRight } from 'react-icons/bs';
 
-// projects data
 const projectsData = {
   "Full-stack": [
     {
       title: 'DevFlow - Q&A Platform',
       path: '/DEVFLOW.png',
       description: 'Full-stack StackOverflow clone with Q&A, voting system, and markdown editor',
-      link: 'https://github.com/AdnanAyaz1/DevFlow_Prisma'
+      link: '/work/devflow'
     },
     {
       title: 'MotoArena AI',
       path: '/moto.png',
       description: 'AI-powered car marketplace with Gemini API integration',
-      link: 'https://github.com/AdnanAyaz1/MotoArena-AI-CAR-MARKET'
+      link: '/work/motoarena'
+    },
+    {
+      title: 'Expedient',
+      path: '/thumb1.jpg',
+      description: 'Monorepo platform with 4 role-specific apps, Twilio messaging, and AWS file storage',
+      link: '/work/expedient'
+    },
+    {
+      title: 'Omni',
+      path: '/thumb2.jpg',
+      description: 'Multi-role marketplace with Stripe checkout, Google Maps, and PostgreSQL backend',
+      link: '/work/omni'
     }
   ],
   "Frontend": [
@@ -65,14 +73,14 @@ const WorkSlider = () => {
   const categories = Object.keys(projectsData);
 
   return (
-    <div className="container mx-auto px-4">
+    <div className="w-full">
       {/* Tabs */}
-      <div className="flex justify-center gap-x-8 mb-12">
+      <div className="flex justify-center gap-x-4 sm:gap-x-8 mb-8 overflow-x-auto whitespace-nowrap px-2">
         {categories.map((category) => (
           <button
             key={category}
             onClick={() => setActiveTab(category)}
-            className={`text-lg font-semibold relative px-4 py-2 transition-all duration-300
+            className={`text-base sm:text-lg font-semibold relative px-3 sm:px-4 py-2 transition-all duration-300
               ${activeTab === category ? 'text-accent' : 'text-white/70 hover:text-white'}
               after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[2px] after:bg-accent
               after:transition-all after:duration-300
@@ -83,52 +91,63 @@ const WorkSlider = () => {
         ))}
       </div>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <Swiper
+        breakpoints={{
+          320: {
+            slidesPerView: 1,
+            spaceBetween: 15,
+          },
+          768: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          1024: {
+            slidesPerView: 3,
+            spaceBetween: 25,
+          },
+        }}
+        freeMode={true}
+        pagination={{ clickable: true }}
+        navigation={true}
+        modules={[FreeMode, Pagination, Navigation]}
+        className="h-[340px] sm:h-[400px] w-full"
+      >
         {projectsData[activeTab].map((project, index) => (
-          <Link
-            key={index}
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative rounded-lg overflow-hidden flex items-center justify-center group h-[300px]"
-          >
-            <div className="flex items-center justify-center relative overflow-hidden group w-full h-full">
-              {/* image */}
-              <Image
-                src={project.path}
-                alt={project.title}
-                fill
-                quality={90}
-                placeholder="blur"
-                blurDataURL={project.path}
-                priority={index === 0}
-                className="object-cover object-top"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              />
-              {/* overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#4a22bd] opacity-0 group-hover:opacity-80 transition-all duration-700"></div>
-              {/* content */}
-              <div className="absolute bottom-0 translate-y-full group-hover:-translate-y-10 group-hover:xl:-translate-y-20 transition-all duration-300 p-4">
-                <div className="flex flex-col items-start gap-y-2">
-                  {/* title */}
-                  <div className="delay-100 font-bold text-white text-lg">{project.title}</div>
-                  {/* description */}
-                  <div className="text-white text-sm max-w-[300px]">{project.description}</div>
-                  {/* view project button */}
-                  <div className="flex items-center gap-x-2 text-[13px] tracking-[0.2em] mt-4">
-                    <span className="delay-100">VIEW</span>
-                    <span className="translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-150">
-                      PROJECT
-                    </span>
-                    <BsArrowRight className="text-xl translate-y-[500%] group-hover:translate-y-0 transition-all duration-300 delay-200" />
+          <SwiperSlide key={index}>
+            <Link
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative rounded-lg overflow-hidden flex items-center justify-center group h-[300px] sm:h-[340px] block"
+            >
+              <div className="flex items-center justify-center relative overflow-hidden group w-full h-full">
+                <Image
+                  src={project.path}
+                  alt={project.title}
+                  fill
+                  quality={90}
+                  placeholder="blur"
+                  blurDataURL={project.path}
+                  priority={index === 0}
+                  className="object-cover object-top"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#4a22bd] opacity-0 group-hover:opacity-80 transition-all duration-700"></div>
+                <div className="absolute bottom-0 translate-y-full group-hover:-translate-y-10 group-hover:xl:-translate-y-20 transition-all duration-300 p-4">
+                  <div className="flex flex-col items-start gap-y-2">
+                    <div className="delay-100 font-bold text-white text-lg">{project.title}</div>
+                    <div className="text-white text-sm max-w-[300px]">{project.description}</div>
+                    <div className="flex items-center gap-x-1.5 text-[11px] tracking-[0.15em] mt-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full px-3 sm:px-4 py-1.5 sm:py-2 transition-all duration-300">
+                      <span>VIEW PROJECT</span>
+                      <BsArrowRight className="text-sm group-hover:translate-x-1 transition-transform duration-300" />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </Link>
+            </Link>
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
     </div>
   );
 };

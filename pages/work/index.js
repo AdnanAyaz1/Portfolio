@@ -8,7 +8,7 @@ import Transition from '../../components/Transition';
 
 const Work = () => {
   return (
-    <div className='h-full bg-primary/30 py-36 flex items-center mb-24'>
+    <div className='h-full bg-primary/30 py-16 sm:py-24 xl:py-36 flex items-center mb-24'>
       <Transition />
       <Circles />
       <div className='container mx-auto'>
@@ -29,7 +29,7 @@ const Work = () => {
               initial='hidden'
               animate='show'
               exit='hidden'
-              className='mb-4 max-w-[400px] mx-auto lg:mx-0'
+              className='mb-4 max-w-[400px] mx-auto lg:mx-0 px-4'
             >
               These are my personal projects showcasing my skills and passion for development. For potential employers, I can also share my professional work from organizations I've collaborated with. Each project here represents a unique challenge and creative solution.
             </motion.p>
