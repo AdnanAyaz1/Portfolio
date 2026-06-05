@@ -4,7 +4,9 @@ import {
   RxDesktop,
   RxRocket,
   RxArrowTopRight,
-  RxMobile
+  RxMobile,
+  RxLoop,
+  RxMagicWand
 } from "react-icons/rx";
 
 // Import Swiper React components
@@ -37,6 +39,16 @@ export const serviceData = [
     icon: <RxPencil2 />,
     title: 'Database Solutions',
     description: 'Database design and implementation using MongoDB, PostgreSQL, and SQLite with Prisma ORM',
+  },
+  {
+    icon: <RxLoop />,
+    title: 'Background Jobs & Automation',
+    description: 'Queue-based job processing with Redis and BullMQ, plus cron-driven scheduled tasks for recurring workflows',
+  },
+  {
+    icon: <RxMagicWand />,
+    title: 'AI Agent Integration',
+    description: 'Agentic AI features, RAG pipelines, and LLM-powered workflows built with OpenAI and LangChain',
   },
 ];
 
