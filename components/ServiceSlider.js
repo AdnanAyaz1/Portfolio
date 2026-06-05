@@ -48,7 +48,7 @@ export const serviceData = [
   {
     icon: <RxMagicWand />,
     title: 'AI Agent Integration',
-    description: 'Agentic AI features, RAG pipelines, and LLM-powered workflows built with OpenAI and LangChain',
+    description: 'Agentic AI features, RAG pipelines, and LLM-powered workflows built with OpenAI',
   },
 ];
 

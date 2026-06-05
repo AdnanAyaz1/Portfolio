@@ -29,7 +29,6 @@ import {
   SiAppwrite,
   SiRedis,
   SiOpenai,
-  SiLangchain,
 } from "react-icons/si";
 
 // components
@@ -86,7 +85,6 @@ const aboutData = [
         icons: [
           <FaRobot />,
           <SiOpenai />,
-          <SiLangchain />,
         ],
       },
       {
@@ -156,7 +154,7 @@ const aboutData = [
         description: 'Scheduled tasks and automated recurring workflows',
       },
       {
-        title: 'OpenAI & LangChain',
+        title: 'OpenAI Integrations',
         description: 'AI agents, RAG pipelines, and LLM-powered features',
       },
       {
