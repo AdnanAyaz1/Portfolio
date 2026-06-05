@@ -6,6 +6,9 @@ import {
   FaGitAlt,
   FaFigma,
   FaDocker,
+  FaTasks,
+  FaRegClock,
+  FaRobot,
 } from "react-icons/fa";
 
 import {
@@ -24,6 +27,9 @@ import {
   SiSqlite,
   SiPostman,
   SiAppwrite,
+  SiRedis,
+  SiOpenai,
+  SiLangchain,
 } from "react-icons/si";
 
 // components
@@ -61,6 +67,8 @@ const aboutData = [
           <SiPrisma />,
           <SiMongoose />,
           <SiSequelize />,
+          <FaTasks />,
+          <FaRegClock />,
         ],
       },
       {
@@ -70,6 +78,15 @@ const aboutData = [
           <SiPostgresql />,
           <SiSqlite />,
           <SiFirebase />,
+          <SiRedis />,
+        ],
+      },
+      {
+        title: 'AI & Automation',
+        icons: [
+          <FaRobot />,
+          <SiOpenai />,
+          <SiLangchain />,
         ],
       },
       {
@@ -108,27 +125,43 @@ const aboutData = [
     ],
   },
   {
-    title: 'projects',
+    title: 'tools',
     info: [
       {
-        title: 'Omni-Connects - Booking & Management Platform',
-        stage: '2025',
-        link: '/work/omni',
+        title: 'Next.js & React',
+        description: 'Production SSR/SSG apps with App Router and React Server Components',
       },
       {
-        title: 'Expedient VMS - Multi-Role Vendor Management System',
-        stage: '2025',
-        link: '/work/expedient',
+        title: 'TypeScript',
+        description: 'End-to-end type safety across the full stack',
       },
       {
-        title: 'DevFlow - StackOverflow-Like Platform',
-        stage: '2023',
-        link: '/work/devflow',
+        title: 'Tailwind CSS & shadcn/ui',
+        description: 'Design-system based, accessible UI development',
       },
       {
-        title: 'MotoArena - AI-Powered Car Discovery Platform',
-        stage: '2023',
-        link: '/work/motoarena',
+        title: 'Node.js & Express',
+        description: 'REST APIs, middleware, and scalable backend services',
+      },
+      {
+        title: 'Prisma, Mongoose & Sequelize',
+        description: 'Type-safe ORM/ODM layers for SQL and NoSQL databases',
+      },
+      {
+        title: 'Redis & BullMQ',
+        description: 'Caching, pub/sub, and reliable background job queues',
+      },
+      {
+        title: 'Cron Jobs',
+        description: 'Scheduled tasks and automated recurring workflows',
+      },
+      {
+        title: 'OpenAI & LangChain',
+        description: 'AI agents, RAG pipelines, and LLM-powered features',
+      },
+      {
+        title: 'Docker',
+        description: 'Containerized dev and production environments',
       },
     ],
   },
@@ -224,12 +257,12 @@ const About = () => {
               );
             })}
           </div>
-          <div className='py-2 xl:py-6 flex flex-col gap-y-2 xl:gap-y-4 items-center xl:items-start px-2'>
+          <div className='py-2 xl:py-6 flex flex-col gap-y-2 xl:gap-y-4 items-center xl:items-start px-2 overflow-y-auto scrollbar-none flex-1 min-h-0'>
             {aboutData[index].info.map((item, itemIndex) => {
               return (
                 <div
                   key={itemIndex}
-                  className='flex-1 flex flex-col md:flex-row max-w-full sm:max-w-max gap-x-2 md:items-center text-white/60 text-center md:text-left'
+                  className={`flex flex-col md:flex-row max-w-full ${item.description ? 'sm:max-w-[520px]' : 'sm:max-w-max'} gap-x-2 md:items-start text-white/60 text-center md:text-left shrink-0`}
                 >
                   {item.icons ? (
                     <>
@@ -238,13 +271,19 @@ const About = () => {
                       {/* icons */}
                       <div className='flex items-center gap-x-2 md:gap-x-4'>
                         <div className='hidden md:flex'>-</div>
-                        <div className='flex gap-x-4'>
+                        <div className='flex flex-wrap gap-4'>
                           {item.icons.map((icon, iconIndex) => {
                             return <div key={iconIndex} className='text-2xl text-white'>{icon}</div>;
                           })}
                         </div>
                       </div>
                     </>
+                  ) : item.description ? (
+                    /* title + description (wraps naturally) */
+                    <div className='font-light'>
+                      <span className='text-white'>{item.title}</span>
+                      <span className='text-white/50'>{' \u2014 '}{item.description}</span>
+                    </div>
                   ) : (
                     /* title + stage (wraps as a unit) */
                     <div className='font-light'>
