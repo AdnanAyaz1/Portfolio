@@ -1,8 +1,9 @@
 // fonts
 import { Sora } from '@next/font/google';
 import dynamic from 'next/dynamic';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 import Loading from './Loading';
+import PremiumLoader from './PremiumLoader';
 
 // Dynamically import components that are not needed immediately
 const Nav = dynamic(() => import('../components/Nav'), {
@@ -22,16 +23,21 @@ const sora = Sora({
 });
 
 const Layout = ({ children }) => {
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <div
-      className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
-    >
-      <Suspense fallback={<Loading />}>
-        <TopLeftImg />
-        <Nav />
-        {children}
-      </Suspense>
-    </div>
+    <>
+      {!loaded && <PremiumLoader onComplete={() => setLoaded(true)} />}
+      <div
+        className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
+      >
+        <Suspense fallback={<Loading />}>
+          <TopLeftImg />
+          <Nav />
+          {children}
+        </Suspense>
+      </div>
+    </>
   );
 };
 
