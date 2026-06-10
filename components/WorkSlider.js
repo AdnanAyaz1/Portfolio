@@ -14,6 +14,18 @@ import { BsArrowRight } from 'react-icons/bs';
 const projectsData = {
   "Full-stack": [
     {
+      title: 'Omni',
+      path: '/thumb2.jpg',
+      description: 'Multi-role marketplace with Stripe checkout, Google Maps, and PostgreSQL backend',
+      link: '/work/omni'
+    },
+    {
+      title: 'Expedient',
+      path: '/thumb1.jpg',
+      description: 'Monorepo platform with 4 role-specific apps, Twilio messaging, and AWS file storage',
+      link: '/work/expedient'
+    },
+    {
       title: 'DevFlow - Q&A Platform',
       path: '/DEVFLOW.png',
       description: 'Full-stack StackOverflow clone with Q&A, voting system, and markdown editor',
@@ -24,18 +36,6 @@ const projectsData = {
       path: '/moto.png',
       description: 'AI-powered car marketplace with Gemini API integration',
       link: '/work/motoarena'
-    },
-    {
-      title: 'Expedient',
-      path: '/thumb1.jpg',
-      description: 'Monorepo platform with 4 role-specific apps, Twilio messaging, and AWS file storage',
-      link: '/work/expedient'
-    },
-    {
-      title: 'Omni',
-      path: '/thumb2.jpg',
-      description: 'Multi-role marketplace with Stripe checkout, Google Maps, and PostgreSQL backend',
-      link: '/work/omni'
     }
   ],
   "Frontend": [

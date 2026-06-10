@@ -38,8 +38,8 @@ const features = [
     title: 'Product Walkthrough',
     description:
       'End-to-end tour of the platform: browsing salons, booking an appointment, dashboard, and checkout.',
-    videoUrl: '',
-    poster: '/thumb1.jpg',
+    videoUrl: '/Adnan%20Ayaz\'s%20Portfolio.mp4',
+    poster: '/omni-frames/omni-frame-1.jpg',
   },
   {
     icon: <HiUserGroup />,
@@ -47,7 +47,7 @@ const features = [
     description:
       'Separate workflows for customers, employees, managers, and admins, each with role-based access and analytics.',
     videoUrl: '',
-    poster: '/thumb2.jpg',
+    poster: '/omni-frames/omni-frame-2.jpg',
   },
   {
     icon: <HiCreditCard />,
@@ -55,7 +55,7 @@ const features = [
     description:
       'Transaction-safe payment flow with deposits, refunds, and provider payouts powered by Stripe.',
     videoUrl: '',
-    poster: '/thumb3.jpg',
+    poster: '/omni-frames/omni-frame-3.jpg',
   },
   {
     icon: <HiMapPin />,
@@ -63,7 +63,7 @@ const features = [
     description:
       'Geofire-backed search lets users discover nearby salons on Google Maps with live filters.',
     videoUrl: '',
-    poster: '/thumb4.jpg',
+    poster: '/omni-frames/omni-frame-4.jpg',
   },
 ];
 

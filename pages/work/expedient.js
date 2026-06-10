@@ -151,17 +151,19 @@ const Expedient = () => {
               truth for orders, candidates, timesheets, and documents.
             </p>
             <div className='flex flex-wrap gap-3'>
-              <Link
-                href='/about'
+              <a
+                href='https://www.expedientvms.com'
+                target='_blank'
+                rel='noopener noreferrer'
                 className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-6 h-12 rounded-full text-sm tracking-wider transition-all duration-300'
               >
-                All projects <HiArrowUpRight />
-              </Link>
+                Live <HiArrowUpRight />
+              </a>
               <Link
-                href='/contact'
+                href='/about'
                 className='inline-flex items-center gap-2 border border-white/20 hover:border-accent hover:text-accent px-6 h-12 rounded-full text-sm tracking-wider transition-all duration-300'
               >
-                Get in touch
+                All projects
               </Link>
             </div>
 
@@ -399,12 +401,14 @@ const Expedient = () => {
             </p>
           </div>
           <div className='flex gap-3'>
-            <Link
-              href='/contact'
+            <a
+              href='https://www.expedientvms.com'
+              target='_blank'
+              rel='noopener noreferrer'
               className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-6 h-12 rounded-full text-sm tracking-wider transition-all duration-300'
             >
-              Get in touch <HiArrowUpRight />
-            </Link>
+              Live <HiArrowUpRight />
+            </a>
             <Link
               href='/about'
               className='inline-flex items-center gap-2 border border-white/20 hover:border-accent hover:text-accent px-6 h-12 rounded-full text-sm tracking-wider transition-all duration-300'
