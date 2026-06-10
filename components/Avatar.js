@@ -3,13 +3,14 @@ import Image from 'next/image';
 
 const Avatar = () => {
   return (
-    <div className='flex w-full h-full'>
+    <div className='hidden xl:flex xl:max-w-none w-full h-full'>
       <Image
         src={'/avatar.png'}
         width={737}
         height={678}
         alt='Developer Avatar'
         className='translate-z-0 w-full h-auto max-w-full object-contain'
+        unoptimized
         priority={true}
         quality={90}
         placeholder="blur"
