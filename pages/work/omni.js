@@ -13,10 +13,13 @@ import {
   HiArrowUpRight,
   HiCalendarDays,
   HiCreditCard,
-  HiUserGroup,
-  HiMapPin,
   HiChartBar,
   HiStar,
+  HiClipboardDocumentList,
+  HiShoppingBag,
+  HiWrenchScrewdriver,
+  HiArrowPath,
+  HiCog6Tooth,
 } from 'react-icons/hi2';
 import { FaReact } from 'react-icons/fa';
 import {
@@ -30,40 +33,75 @@ import {
   SiReacthookform,
 } from 'react-icons/si';
 
-// Replace each `videoUrl` with your Cloudinary (or other CDN) URL once uploaded.
-// Example Cloudinary URL: https://res.cloudinary.com/<cloud-name>/video/upload/v1234567890/omni-walkthrough.mp4
+// Full demo video URL — update this path to your uploaded video
+const demoVideo = '/Adnan%20Ayaz\'s%20Portfolio.mp4';
+const signupVideo = '/omni-frames/My%20Video.mp4';
+const bookingVideo = '/omni-frames/booking.mp4';
+const productOrderAdminVideo = '/omni-frames/Product_Order_Admin-highlight.mp4';
+const productOrderClientVideo = '/omni-frames/Product_Order_Client-highlight.mp4';
+const employeeServicesVideo = '/omni-frames/Employee_Services.mp4';
+
+// Feature screens extracted from the demo video
 const features = [
   {
-    icon: <HiCalendarDays />,
-    title: 'Product Walkthrough',
+    icon: <HiClipboardDocumentList />,
+    title: 'Login & Authentication',
     description:
-      'End-to-end tour of the platform: browsing salons, booking an appointment, dashboard, and checkout.',
-    videoUrl: '/Adnan%20Ayaz\'s%20Portfolio.mp4',
-    poster: '/omni-frames/omni-frame-1.jpg',
+      'Secure Firebase Auth login with role-based routing. Admins and clients each land on their own tailored dashboard after authentication.',
   },
   {
-    icon: <HiUserGroup />,
-    title: 'Multi-Role Dashboards',
+    icon: <HiChartBar />,
+    title: 'Dashboard & Sidebar Navigation',
     description:
-      'Separate workflows for customers, employees, managers, and admins, each with role-based access and analytics.',
-    videoUrl: '',
-    poster: '/omni-frames/omni-frame-2.jpg',
+      'A unified admin dashboard with sidebar navigation giving instant access to bookings, products, services, employees, and analytics. Real-time revenue and booking stats at a glance.',
+  },
+  {
+    icon: <HiCalendarDays />,
+    title: 'Booking Management',
+    description:
+      'Full booking lifecycle \u2014 create, view, edit, and cancel appointments. Color-coded react-big-calendar with week/day views, employee filtering, and status tracking (Pending, Done, Cancelled).',
   },
   {
     icon: <HiCreditCard />,
-    title: 'Stripe Checkout',
+    title: 'Invoice & Payment Processing',
     description:
-      'Transaction-safe payment flow with deposits, refunds, and provider payouts powered by Stripe.',
-    videoUrl: '',
-    poster: '/omni-frames/omni-frame-3.jpg',
+      'Stripe-powered checkout with automated fee calculation (sales tax, Omni fee, card processing). Webhook-verified payments, invoice generation, and refund handling.',
   },
   {
-    icon: <HiMapPin />,
-    title: 'Location Discovery',
+    icon: <HiShoppingBag />,
+    title: 'Product & Inventory Management',
     description:
-      'Geofire-backed search lets users discover nearby salons on Google Maps with live filters.',
-    videoUrl: '',
-    poster: '/omni-frames/omni-frame-4.jpg',
+      'Complete product CRUD with table/grid views, search, bulk selection, and Cloudinary image uploads. Track stock levels and manage product details from a single panel.',
+  },
+  {
+    icon: <HiArrowPath />,
+    title: 'Update Product Quantities',
+    description:
+      'Quick-edit stock quantities directly from the inventory view. Real-time Firestore sync ensures all dashboards reflect the latest inventory state.',
+  },
+  {
+    icon: <HiWrenchScrewdriver />,
+    title: 'Service Management',
+    description:
+      'Create and manage services with duration, pricing, and type (At Shop / At Home). Assign services to specific employees and control availability per staff member.',
+  },
+  {
+    icon: <HiStar />,
+    title: 'Customer Checkout / Cart',
+    description:
+      'Customer-facing checkout with service selection, date/time picking, address input for at-home bookings, and order summary with tax/fee breakdown before Stripe payment.',
+  },
+  {
+    icon: <HiCog6Tooth />,
+    title: 'Booking Details',
+    description:
+      'Detailed booking view showing client info, selected services, assigned employee, payment status, and timeline. Supports status updates and action triggers from a single screen.',
+  },
+  {
+    icon: <HiCalendarDays />,
+    title: 'Task / Todo Scheduling Calendar',
+    description:
+      'Interactive calendar for scheduling staff tasks, tracking attendance, and managing off-days. Employees see their own schedule while admins get a full team overview.',
   },
 ];
 
@@ -71,7 +109,9 @@ const techStack = [
   { name: 'React', icon: <FaReact />, color: 'text-[#61DAFB]' },
   { name: 'Vite', icon: <SiVite />, color: 'text-[#646CFF]' },
   { name: 'Redux Toolkit', icon: <SiRedux />, color: 'text-[#764ABC]' },
+  { name: 'Zustand', icon: <SiRedux />, color: 'text-[#443E38]' },
   { name: 'Tailwind CSS', icon: <SiTailwindcss />, color: 'text-[#06B6D4]' },
+  { name: 'Firebase', icon: <HiStar />, color: 'text-[#FFCA28]' },
   { name: 'PostgreSQL', icon: <SiPostgresql />, color: 'text-[#4169E1]' },
   { name: 'Stripe', icon: <SiStripe />, color: 'text-[#635BFF]' },
   { name: 'Google Maps', icon: <SiGooglemaps />, color: 'text-[#4285F4]' },
@@ -80,17 +120,20 @@ const techStack = [
 ];
 
 const contributions = [
-  'Architected the multi-role frontend (customer / employee / manager / admin) on top of React + Vite with Redux Toolkit and Zustand for cross-slice state.',
-  'Built the booking engine with date-range, time-slot, and availability logic synced to PostgreSQL with real-time subscriptions.',
-  'Implemented Stripe Checkout with transaction-safe writes, deposits, refunds, and provider payouts.',
-  'Integrated Google Maps + Geofire for location-based salon discovery with debounced filters.',
-  'Designed the analytics dashboard with Recharts \u2014 revenue, bookings, and staff utilisation views.',
-  'Standardised forms with React Hook Form + Yup/Zod and shared, accessible Tailwind components.',
+  'Built the full admin dashboard with sidebar navigation, role-based routing, and real-time stats using React + Vite with Redux Toolkit and Zustand.',
+  'Implemented the booking management system with react-big-calendar (week/day views), color-coded events, employee filtering, and status lifecycle (Pending \u2192 Done \u2192 Cancelled).',
+  'Integrated Stripe Checkout with automated fee breakdown (sales tax, platform fee, card processing), webhook verification, invoice generation, and refund handling.',
+  'Designed the product & inventory management layer with CRUD, table/grid views, bulk actions, Cloudinary image uploads, and real-time quantity updates.',
+  'Built the service management system allowing admins to create services with duration, pricing, type (At Shop / At Home), and per-employee assignment.',
+  'Developed the customer checkout flow with service selection, date/time picking, address input for at-home bookings, and order summary with tax/fee calculation.',
+  'Created the task/todo scheduling calendar for staff management with attendance tracking, off-day configuration, and team-wide overview for admins.',
+  'Architected Firebase Cloud Functions backend handling payment processing, webhook verification, and real-time Firestore sync across all dashboards.',
 ];
 
 const results = [
-  { value: '4', label: 'User roles', sub: 'Customer, Employee, Manager, Admin' },
-  { value: '100%', label: 'Real-time sync', sub: 'Bookings, calendar, and inventory' },
+  { value: '6', label: 'Demo videos', sub: 'Sign Up, Booking, Products, Orders, Employee, Services' },
+  { value: '2', label: 'User roles', sub: 'Admin & Client' },
+  { value: '100%', label: 'Real-time sync', sub: 'Bookings, inventory, and calendar via Firestore' },
   { value: 'Live', label: 'In production', sub: 'omniconnects.com' },
 ];
 
@@ -182,8 +225,8 @@ const Omni = () => {
             exit='hidden'
           >
             <CaseStudyVideo
-              src={features[0].videoUrl}
-              poster={features[0].poster}
+              src={demoVideo}
+              poster='/omni-frames/omni-frame-1.jpg'
               title='Omni-Connects \u2014 product walkthrough'
             />
           </motion.div>
@@ -245,7 +288,7 @@ const Omni = () => {
             initial='hidden'
             whileInView='show'
             viewport={{ once: true, amount: 0.2 }}
-            className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 xl:grid-cols-9 gap-3 sm:gap-4'
+            className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-5'
           >
             {techStack.map((tech, i) => (
               <div
@@ -261,7 +304,119 @@ const Omni = () => {
           </motion.div>
         </section>
 
-        {/* features with videos */}
+        {/* demo videos */}
+        <section className='mb-16 xl:mb-28'>
+          <motion.div
+            variants={fadeIn('up', 0.2)}
+            initial='hidden'
+            whileInView='show'
+            viewport={{ once: true, amount: 0.3 }}
+            className='text-center mb-10'
+          >
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Walkthrough</div>
+            <h2 className='h2'>See it in action.</h2>
+          </motion.div>
+
+          <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8'>
+            <motion.div
+              variants={fadeIn('right', 0.3)}
+              initial='hidden'
+              whileInView='show'
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <CaseStudyVideo
+                src={demoVideo}
+                poster='/omni-frames/omni-frame-1.jpg'
+                title='Omni-Connects \u2014 full product demo'
+              />
+              <div className='mt-4 text-center'>
+                <div className='text-sm font-medium'>Full Product Demo</div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeIn('up', 0.3)}
+              initial='hidden'
+              whileInView='show'
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <CaseStudyVideo
+                src={signupVideo}
+                poster='/omni-frames/omni-frame-2.jpg'
+                title='Omni-Connects \u2014 sign up flow'
+              />
+              <div className='mt-4 text-center'>
+                <div className='text-sm font-medium'>Sign Up &amp; Onboarding</div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeIn('up', 0.3)}
+              initial='hidden'
+              whileInView='show'
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <CaseStudyVideo
+                src={bookingVideo}
+                poster='/omni-frames/omni-frame-3.jpg'
+                title='Omni-Connects \u2014 booking process'
+              />
+              <div className='mt-4 text-center'>
+                <div className='text-sm font-medium'>Booking Process</div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeIn('up', 0.3)}
+              initial='hidden'
+              whileInView='show'
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <CaseStudyVideo
+                src={productOrderAdminVideo}
+                poster='/omni-frames/omni-frame-4.jpg'
+                title='Omni-Connects \u2014 product & order management (admin)'
+              />
+              <div className='mt-4 text-center'>
+                <div className='text-sm font-medium'>Product &amp; Orders (Admin)</div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeIn('up', 0.3)}
+              initial='hidden'
+              whileInView='show'
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <CaseStudyVideo
+                src={productOrderClientVideo}
+                poster='/omni-frames/omni-frame-5.jpg'
+                title='Omni-Connects \u2014 product & order management (client)'
+              />
+              <div className='mt-4 text-center'>
+                <div className='text-sm font-medium'>Product &amp; Orders (Client)</div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeIn('left', 0.3)}
+              initial='hidden'
+              whileInView='show'
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <CaseStudyVideo
+                src={employeeServicesVideo}
+                poster='/omni-frames/omni-frame-1.jpg'
+                title='Omni-Connects \u2014 employee & services'
+              />
+              <div className='mt-4 text-center'>
+                <div className='text-sm font-medium'>Employee &amp; Services</div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* features grid */}
         <section className='mb-16 xl:mb-28'>
           <motion.div
             variants={fadeIn('up', 0.2)}
@@ -271,41 +426,43 @@ const Omni = () => {
             className='text-center mb-10'
           >
             <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Key Features</div>
-            <h2 className='h2'>A closer look at the experience.</h2>
+            <h2 className='h2'>10 screens. One seamless platform.</h2>
+            <p className='text-white/50 mt-3 max-w-xl mx-auto text-sm sm:text-base'>
+              Every feature shown in the demo is production code &mdash; no mockups, no placeholders.
+            </p>
           </motion.div>
 
-          <div className='flex flex-col gap-12 xl:gap-20'>
-            {features.slice(1).map((feature, i) => {
-              const reverse = i % 2 === 1;
-              return (
-                <motion.div
-                  key={i}
-                  variants={fadeIn(reverse ? 'left' : 'right', 0.2)}
-                  initial='hidden'
-                  whileInView='show'
-                  viewport={{ once: true, amount: 0.25 }}
-                  className={`grid xl:grid-cols-2 gap-6 xl:gap-12 items-center ${
-                    reverse ? 'xl:[&>*:first-child]:order-2' : ''
-                  }`}
-                >
-                  <CaseStudyVideo
-                    src={feature.videoUrl}
-                    poster={feature.poster}
-                    title={feature.title}
-                  />
-                  <div>
-                    <div className='inline-flex items-center justify-center w-12 h-12 rounded-full bg-accent/10 text-accent text-2xl mb-4'>
-                      {feature.icon}
-                    </div>
-                    <h3 className='text-2xl sm:text-3xl font-semibold mb-4'>{feature.title}</h3>
-                    <p className='text-white/60 leading-relaxed max-w-[520px]'>
-                      {feature.description}
-                    </p>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </div>
+          <motion.div
+            variants={fadeIn('up', 0.4)}
+            initial='hidden'
+            whileInView='show'
+            viewport={{ once: true, amount: 0.1 }}
+            className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5'
+          >
+            {features.map((feature, i) => (
+              <motion.div
+                key={i}
+                variants={fadeIn('up', 0.15 + i * 0.05)}
+                initial='hidden'
+                whileInView='show'
+                viewport={{ once: true, amount: 0.1 }}
+                className='group bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-accent/40 rounded-2xl p-6 transition-all duration-300'
+              >
+                <div className='inline-flex items-center justify-center w-11 h-11 rounded-xl bg-accent/10 text-accent text-xl mb-4 group-hover:scale-110 transition-transform duration-300'>
+                  {feature.icon}
+                </div>
+                <div className='flex items-center gap-2 mb-2'>
+                  <span className='text-[10px] font-mono text-accent/60 bg-accent/10 px-2 py-0.5 rounded-full'>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className='text-base sm:text-lg font-semibold'>{feature.title}</h3>
+                </div>
+                <p className='text-white/50 text-sm leading-relaxed'>
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
         </section>
 
         {/* my role */}
@@ -320,8 +477,9 @@ const Omni = () => {
             <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>My Role</div>
             <h2 className='h2'>What I built.</h2>
             <p className='text-white/60 mt-2'>
-              I led the frontend architecture and shipped the bulk of the user-facing surface,
-              collaborating with the backend team on the PostgreSQL/Stripe integrations.
+              I led the full-stack development \u2014 from multi-role frontend architecture and real-time
+              booking engine to Stripe payment integration, Firebase Cloud Functions, and the entire
+              e-commerce and community layer.
             </p>
           </motion.div>
 
@@ -364,7 +522,7 @@ const Omni = () => {
             initial='hidden'
             whileInView='show'
             viewport={{ once: true, amount: 0.2 }}
-            className='grid sm:grid-cols-3 gap-4 sm:gap-6'
+            className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6'
           >
             {results.map((r, i) => (
               <div
