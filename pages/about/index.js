@@ -50,52 +50,52 @@ const aboutData = [
       {
         title: 'Frontend Development',
         icons: [
-          <SiNextdotjs />,
-          <FaReact />,
-          <SiTypescript />,
-          <SiTailwindcss />,
-          <SiShadcnui />,
-          <SiRedux />,
+          { icon: <SiNextdotjs />, name: 'Next.js' },
+          { icon: <FaReact />, name: 'React' },
+          { icon: <SiTypescript />, name: 'TypeScript' },
+          { icon: <SiTailwindcss />, name: 'Tailwind CSS' },
+          { icon: <SiShadcnui />, name: 'shadcn/ui' },
+          { icon: <SiRedux />, name: 'Redux' },
         ],
       },
       {
         title: 'Backend Development',
         icons: [
-          <FaNode />,
-          <SiExpress />,
-          <SiPrisma />,
-          <SiMongoose />,
-          <SiSequelize />,
-          <FaTasks />,
-          <FaRegClock />,
+          { icon: <FaNode />, name: 'Node.js' },
+          { icon: <SiExpress />, name: 'Express' },
+          { icon: <SiPrisma />, name: 'Prisma' },
+          { icon: <SiMongoose />, name: 'Mongoose' },
+          { icon: <SiSequelize />, name: 'Sequelize' },
+          { icon: <FaTasks />, name: 'Task Scheduling' },
+          { icon: <FaRegClock />, name: 'Cron Jobs' },
         ],
       },
       {
         title: 'Databases',
         icons: [
-          <SiMongodb />,
-          <SiPostgresql />,
-          <SiSqlite />,
-          <SiFirebase />,
-          <SiRedis />,
+          { icon: <SiMongodb />, name: 'MongoDB' },
+          { icon: <SiPostgresql />, name: 'PostgreSQL' },
+          { icon: <SiSqlite />, name: 'SQLite' },
+          { icon: <SiFirebase />, name: 'Firebase' },
+          { icon: <SiRedis />, name: 'Redis' },
         ],
       },
       {
         title: 'AI & Automation',
         icons: [
-          <FaRobot />,
-          <SiOpenai />,
+          { icon: <FaRobot />, name: 'Automation' },
+          { icon: <SiOpenai />, name: 'OpenAI' },
         ],
       },
       {
         title: 'Tools & Platforms',
         icons: [
-          <FaGitAlt />,
-          <FaGithub />,
-          <FaDocker />,
-          <SiPostman />,
-          <FaFigma />,
-          <SiAppwrite />,
+          { icon: <FaGitAlt />, name: 'Git' },
+          { icon: <FaGithub />, name: 'GitHub' },
+          { icon: <FaDocker />, name: 'Docker' },
+          { icon: <SiPostman />, name: 'Postman' },
+          { icon: <FaFigma />, name: 'Figma' },
+          { icon: <SiAppwrite />, name: 'Appwrite' },
         ],
       },
     ],
@@ -270,8 +270,17 @@ const About = () => {
                       <div className='flex items-center gap-x-2 md:gap-x-4'>
                         <div className='hidden md:flex'>-</div>
                         <div className='flex flex-wrap gap-4'>
-                          {item.icons.map((icon, iconIndex) => {
-                            return <div key={iconIndex} className='text-2xl text-white'>{icon}</div>;
+                          {item.icons.map((item, iconIndex) => {
+                            return (
+                              <div key={iconIndex} className='relative group/icon'>
+                                <div className='text-2xl text-white hover:text-accent transition-colors duration-300 cursor-default'>
+                                  {item.icon}
+                                </div>
+                                <div className='absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/10 rounded-md text-[11px] text-white/80 whitespace-nowrap opacity-0 pointer-events-none group-hover/icon:opacity-100 transition-opacity duration-200 z-50'>
+                                  {item.name}
+                                </div>
+                              </div>
+                            );
                           })}
                         </div>
                       </div>
