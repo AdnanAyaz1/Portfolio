@@ -32,7 +32,7 @@ const Home = () => {
       </Suspense>
       {/* text */}
       <div className='w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10'>
-        <div className='text-center flex flex-col justify-center pt-16 sm:pt-28 xl:pt-40 xl:text-left h-full min-h-[100vh] sm:min-h-full container mx-auto'>
+        <div className='text-center flex flex-col justify-center pt-16 sm:pt-28 xl:pt-40 xl:text-left h-full min-h-[100vh] sm:min-h-full pb-20 sm:pb-0 container mx-auto'>
           {/* title */}
           <motion.div
             variants={fadeIn('down', 0.2)}
