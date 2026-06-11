@@ -32,7 +32,7 @@ const Home = () => {
       </Suspense>
       {/* text */}
       <div className='w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10'>
-        <div className='text-center flex flex-col justify-center pt-20 sm:pt-28 xl:pt-40 xl:text-left h-full container mx-auto'>
+        <div className='text-center flex flex-col justify-center pt-16 sm:pt-28 xl:pt-40 xl:text-left h-full container mx-auto'>
           {/* title */}
           <motion.div
             variants={fadeIn('down', 0.2)}
@@ -63,11 +63,11 @@ const Home = () => {
             initial='hidden' 
             animate='show' 
             exit='hidden'
-            className='max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16'>
+            className='max-w-[90vw] sm:max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-6 xl:mb-16 text-xs sm:text-sm md:text-base'>
             Full Stack Next.js Developer with expertise in modern web technologies including TypeScript, Tailwind CSS, and backend systems. Specialized in building scalable and performant web applications.
           </motion.p>
           {/* btns */}
-          <div className='flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center xl:hidden relative'>
+          <div className='flex flex-row items-center gap-3 sm:gap-6 justify-center xl:hidden relative'>
             <ProjectsBtn />
             <button
               onClick={() => {
