@@ -8,7 +8,7 @@ import Transition from '../../components/Transition';
 
 const Services = () => {
   return (
-    <div className='min-h-full bg-primary/30 py-16 sm:py-24 xl:py-36 flex items-center mb-24'>
+    <div className='h-full bg-primary/30 py-16 sm:py-24 xl:py-36 flex items-center mb-24'>
       <Transition />
       <Circles />
       <div className='container mx-auto'>
