@@ -179,7 +179,7 @@ const MotoArena = () => {
             exit='hidden'
           >
             <CaseStudyVideo
-              src='/MOTOVERSE-highlight.mp4'
+              src='/Motoverse/Landing Page-highlight.mp4'
               poster='/moto.png'
               title='Motoverse \u2014 product walkthrough'
             />
