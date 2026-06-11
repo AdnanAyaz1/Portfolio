@@ -33,40 +33,30 @@ import {
   SiChartdotjs,
 } from 'react-icons/si';
 
-// Replace each `videoUrl` with your Cloudinary (or other CDN) URL once uploaded.
-// Example Cloudinary URL: https://res.cloudinary.com/<cloud-name>/video/upload/v1234567890/expedient-walkthrough.mp4
 const features = [
   {
     icon: <HiUsers />,
     title: 'Multi-Role Apps',
     description:
       'Four role-specific applications (admin, client, candidate, vendor) sharing a single design system and code base via the monorepo.',
-    videoUrl: '',
-    poster: '/thumb1.jpg',
   },
   {
     icon: <HiCalendarDays />,
     title: 'Orders & Timesheets',
     description:
       'End-to-end order lifecycle, react-big-calendar scheduling, and timesheet approvals with server-side pagination via TanStack Table.',
-    videoUrl: '',
-    poster: '/thumb2.jpg',
   },
   {
     icon: <HiChatBubbleLeftRight />,
     title: 'Twilio Messaging',
     description:
       'In-app conversations between clients, vendors, and candidates powered by Twilio Conversations with read state and notifications.',
-    videoUrl: '',
-    poster: '/thumb3.jpg',
   },
   {
     icon: <HiCloudArrowUp />,
     title: 'AWS File Storage',
     description:
       'Secure resume, contract, and document uploads on AWS S3 with signed URLs, SES email pipelines, and SQS-backed async jobs.',
-    videoUrl: '',
-    poster: '/thumb4.jpg',
   },
 ];
 
@@ -101,6 +91,7 @@ const results = [
   { value: '4', label: 'Role-based apps', sub: 'Admin, Client, Candidate, Vendor' },
   { value: '1', label: 'Monorepo', sub: 'Shared packages across web + server' },
   { value: '100%', label: 'Reused UI', sub: 'One design system, zero duplication' },
+  { value: 'Live', label: 'In production', sub: 'expedientvms.com' },
 ];
 
 const Expedient = () => {
@@ -157,7 +148,7 @@ const Expedient = () => {
                 rel='noopener noreferrer'
                 className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-6 h-12 rounded-full text-sm tracking-wider transition-all duration-300'
               >
-                Live <HiArrowUpRight />
+                Visit live site <HiArrowUpRight />
               </a>
               <Link
                 href='/about'
@@ -191,8 +182,8 @@ const Expedient = () => {
             exit='hidden'
           >
             <CaseStudyVideo
-              src={features[0].videoUrl}
-              poster={features[0].poster}
+              src=''
+              poster='/expedient.png'
               title='Expedient VMS \u2014 product walkthrough'
             />
           </motion.div>
@@ -207,7 +198,7 @@ const Expedient = () => {
             viewport={{ once: true, amount: 0.3 }}
             className='bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8'
           >
-            <div className='text-xs uppercase tracking-[2px] text-accent mb-4'>The Problem</div>
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-4'>The Problem</div>
             <h3 className='text-xl sm:text-2xl font-semibold mb-4'>
               Staffing agencies run on stitched-together tools.
             </h3>
@@ -226,7 +217,7 @@ const Expedient = () => {
             viewport={{ once: true, amount: 0.3 }}
             className='bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8'
           >
-            <div className='text-xs uppercase tracking-[2px] text-accent mb-4'>The Solution</div>
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-4'>The Solution</div>
             <h3 className='text-xl sm:text-2xl font-semibold mb-4'>
               One monorepo. Four role-based apps. One backend.
             </h3>
@@ -247,27 +238,24 @@ const Expedient = () => {
             viewport={{ once: true, amount: 0.3 }}
             className='text-center mb-10'
           >
-            <div className='text-xs uppercase tracking-[2px] text-accent mb-3'>Tech Stack</div>
-            <h2 className='text-3xl sm:text-4xl xl:text-5xl font-semibold'>
-              Built to scale across teams.
-            </h2>
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Tech Stack</div>
+            <h2 className='h2'>Built to scale across teams.</h2>
           </motion.div>
-
           <motion.div
-            variants={fadeIn('up', 0.3)}
+            variants={fadeIn('up', 0.4)}
             initial='hidden'
             whileInView='show'
             viewport={{ once: true, amount: 0.2 }}
-            className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-3 sm:gap-4'
+            className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-5'
           >
-            {techStack.map((t) => (
+            {techStack.map((tech, i) => (
               <div
-                key={t.name}
-                className='flex flex-col items-center justify-center gap-2 bg-white/[0.03] border border-white/10 rounded-xl py-5 px-2 hover:border-accent/40 transition-colors duration-300'
+                key={i}
+                className='group bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-accent/40 rounded-xl p-4 flex flex-col items-center justify-center text-center transition-all duration-300'
               >
-                <div className={`text-3xl ${t.color}`}>{t.icon}</div>
-                <div className='text-[11px] sm:text-xs text-white/70 text-center leading-tight'>
-                  {t.name}
+                <div className={`text-3xl sm:text-4xl mb-2 ${tech.color}`}>{tech.icon}</div>
+                <div className='text-[11px] sm:text-xs text-white/60 group-hover:text-white transition-colors'>
+                  {tech.name}
                 </div>
               </div>
             ))}
@@ -283,40 +271,44 @@ const Expedient = () => {
             viewport={{ once: true, amount: 0.3 }}
             className='text-center mb-10'
           >
-            <div className='text-xs uppercase tracking-[2px] text-accent mb-3'>Key Features</div>
-            <h2 className='text-3xl sm:text-4xl xl:text-5xl font-semibold'>What the platform does.</h2>
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Key Features</div>
+            <h2 className='h2'>What the platform does.</h2>
+            <p className='text-white/50 mt-3 max-w-xl mx-auto text-sm sm:text-base'>
+              Every feature shown is production code &mdash; no mockups, no placeholders.
+            </p>
           </motion.div>
 
-          <div className='flex flex-col gap-16 xl:gap-24'>
-            {features.map((f, i) => (
-              <div
-                key={f.title}
-                className={`grid xl:grid-cols-2 gap-8 xl:gap-16 items-center ${
-                  i % 2 === 1 ? 'xl:[&>*:first-child]:order-2' : ''
-                }`}
+          <motion.div
+            variants={fadeIn('up', 0.4)}
+            initial='hidden'
+            whileInView='show'
+            viewport={{ once: true, amount: 0.1 }}
+            className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5'
+          >
+            {features.map((feature, i) => (
+              <motion.div
+                key={i}
+                variants={fadeIn('up', 0.15 + i * 0.05)}
+                initial='hidden'
+                whileInView='show'
+                viewport={{ once: true, amount: 0.1 }}
+                className='group bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-accent/40 rounded-2xl p-6 transition-all duration-300'
               >
-                <motion.div
-                  variants={fadeIn(i % 2 === 0 ? 'right' : 'left', 0.2)}
-                  initial='hidden'
-                  whileInView='show'
-                  viewport={{ once: true, amount: 0.3 }}
-                >
-                  <div className='text-4xl text-accent mb-4'>{f.icon}</div>
-                  <h3 className='text-2xl sm:text-3xl font-semibold mb-4'>{f.title}</h3>
-                  <p className='text-white/60 leading-relaxed max-w-[520px]'>{f.description}</p>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeIn(i % 2 === 0 ? 'left' : 'right', 0.3)}
-                  initial='hidden'
-                  whileInView='show'
-                  viewport={{ once: true, amount: 0.3 }}
-                >
-                  <CaseStudyVideo src={f.videoUrl} poster={f.poster} title={f.title} />
-                </motion.div>
-              </div>
+                <div className='inline-flex items-center justify-center w-11 h-11 rounded-xl bg-accent/10 text-accent text-xl mb-4 group-hover:scale-110 transition-transform duration-300'>
+                  {feature.icon}
+                </div>
+                <div className='flex items-center gap-2 mb-2'>
+                  <span className='text-[10px] font-mono text-accent/60 bg-accent/10 px-2 py-0.5 rounded-full'>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className='text-base sm:text-lg font-semibold'>{feature.title}</h3>
+                </div>
+                <p className='text-white/50 text-sm leading-relaxed'>
+                  {feature.description}
+                </p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
 
         {/* my role */}
@@ -326,31 +318,35 @@ const Expedient = () => {
             initial='hidden'
             whileInView='show'
             viewport={{ once: true, amount: 0.3 }}
-            className='text-center mb-10'
+            className='max-w-3xl mb-10'
           >
-            <div className='text-xs uppercase tracking-[2px] text-accent mb-3'>My Role</div>
-            <h2 className='text-3xl sm:text-4xl xl:text-5xl font-semibold'>What I built.</h2>
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>My Role</div>
+            <h2 className='h2'>What I built.</h2>
+            <p className='text-white/60 mt-2'>
+              I led the full-stack development {'\u2014'} from monorepo architecture and role-based
+              frontend apps to the Express backend, AWS integrations, and Twilio messaging layer.
+            </p>
           </motion.div>
 
-          <motion.div
-            variants={fadeIn('up', 0.3)}
+          <motion.ul
+            variants={fadeIn('up', 0.4)}
             initial='hidden'
             whileInView='show'
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.15 }}
             className='grid md:grid-cols-2 gap-4 sm:gap-6'
           >
-            {contributions.map((c, i) => (
-              <div
+            {contributions.map((item, i) => (
+              <li
                 key={i}
-                className='flex gap-4 bg-white/[0.03] border border-white/10 rounded-2xl p-5 sm:p-6 hover:border-accent/30 transition-colors duration-300'
+                className='flex gap-4 bg-white/[0.03] border border-white/10 rounded-xl p-5'
               >
-                <div className='flex-shrink-0 w-10 h-10 rounded-full bg-accent/10 border border-accent/30 text-accent text-sm font-semibold flex items-center justify-center'>
+                <div className='flex-shrink-0 w-8 h-8 rounded-full bg-accent/15 text-accent flex items-center justify-center text-sm font-semibold'>
                   {String(i + 1).padStart(2, '0')}
                 </div>
-                <p className='text-white/70 leading-relaxed text-sm sm:text-base'>{c}</p>
-              </div>
+                <p className='text-white/70 text-sm sm:text-base leading-relaxed'>{item}</p>
+              </li>
             ))}
-          </motion.div>
+          </motion.ul>
         </section>
 
         {/* results */}
@@ -362,16 +358,16 @@ const Expedient = () => {
             viewport={{ once: true, amount: 0.3 }}
             className='text-center mb-10'
           >
-            <div className='text-xs uppercase tracking-[2px] text-accent mb-3'>Outcomes</div>
-            <h2 className='text-3xl sm:text-4xl xl:text-5xl font-semibold'>Shipped and live.</h2>
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Outcomes</div>
+            <h2 className='h2'>Shipped and live.</h2>
           </motion.div>
 
           <motion.div
-            variants={fadeIn('up', 0.3)}
+            variants={fadeIn('up', 0.4)}
             initial='hidden'
             whileInView='show'
             viewport={{ once: true, amount: 0.2 }}
-            className='grid md:grid-cols-3 gap-4 sm:gap-6'
+            className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6'
           >
             {results.map((r, i) => (
               <div
@@ -395,9 +391,9 @@ const Expedient = () => {
           className='flex flex-col sm:flex-row items-center justify-between gap-6 bg-gradient-to-r from-accent/15 via-accent/5 to-transparent border border-accent/20 rounded-2xl p-6 sm:p-10 mb-24 sm:mb-32 xl:mb-40'
         >
           <div>
-            <h3 className='text-xl sm:text-2xl font-semibold mb-2'>Want the deep dive?</h3>
+            <h3 className='text-xl sm:text-2xl font-semibold mb-2'>Want to see it live?</h3>
             <p className='text-white/60 text-sm sm:text-base'>
-              I can walk you through the monorepo structure, Auth0 setup, or the order pipeline.
+              Try Expedient VMS in production or jump back to the rest of my work.
             </p>
           </div>
           <div className='flex gap-3'>
@@ -407,7 +403,7 @@ const Expedient = () => {
               rel='noopener noreferrer'
               className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-6 h-12 rounded-full text-sm tracking-wider transition-all duration-300'
             >
-              Live <HiArrowUpRight />
+              Visit site <HiArrowUpRight />
             </a>
             <Link
               href='/about'

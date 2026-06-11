@@ -10,9 +10,7 @@ const Nav = dynamic(() => import('../components/Nav'), {
   loading: () => <Loading />
 });
 
-const TopLeftImg = dynamic(() => import('../components/TopLeftImg'), {
-  ssr: false
-});
+const TopLeftImg = dynamic(() => import('../components/TopLeftImg'));
 
 // font settings
 const sora = Sora({

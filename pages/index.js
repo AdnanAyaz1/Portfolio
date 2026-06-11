@@ -46,9 +46,9 @@ const Home = () => {
                 options={{
                   strings: [
                     'Adnan Ayaz',
-                    'a Full Stack Developer',
+                    'a Full Stack AI Dev',
                     'a Next.js Expert',
-                    'a Backend Developer'
+                    'a Backend Dev'
                   ],
                   autoStart: true,
                   loop: true,

@@ -14,28 +14,28 @@ import { BsArrowRight } from 'react-icons/bs';
 const projectsData = {
   "Full-stack": [
     {
+      title: 'Motoverse',
+      path: '/moto.png',
+      description: 'AI-powered car marketplace with Gemini API integration',
+      link: '/work/motoarena'
+    },
+    {
       title: 'Omni',
-      path: '/thumb2.jpg',
-      description: 'Multi-role marketplace with Stripe checkout, Google Maps, and PostgreSQL backend',
+      path: '/omni.png',
+      description: 'Multi-role SaaS booking platform with Stripe, Google Maps, and PostgreSQL',
       link: '/work/omni'
     },
     {
       title: 'Expedient',
-      path: '/thumb1.jpg',
-      description: 'Monorepo platform with 4 role-specific apps, Twilio messaging, and AWS file storage',
+      path: '/expedient.png',
+      description: 'Monorepo vendor management system with 4 role-specific apps and Twilio',
       link: '/work/expedient'
     },
     {
-      title: 'DevFlow - Q&A Platform',
+      title: 'DevFlow',
       path: '/DEVFLOW.png',
-      description: 'Full-stack StackOverflow clone with Q&A, voting system, and markdown editor',
+      description: 'Open-source Q&A platform with AI tag suggestions and reputation system',
       link: '/work/devflow'
-    },
-    {
-      title: 'MotoArena AI',
-      path: '/moto.png',
-      description: 'AI-powered car marketplace with Gemini API integration',
-      link: '/work/motoarena'
     }
   ],
   "Frontend": [

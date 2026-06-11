@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
 import { HiPlay, HiPause, HiSpeakerWave, HiSpeakerXMark, HiArrowsPointingOut, HiXMark } from 'react-icons/hi2';
 
 const CaseStudyVideo = ({ src, poster, title, aspectRatio = '16/9' }) => {
@@ -128,12 +127,10 @@ const CaseStudyVideo = ({ src, poster, title, aspectRatio = '16/9' }) => {
         ) : (
           <div className='absolute inset-0 flex flex-col items-center justify-center text-white/40 gap-2'>
             {poster ? (
-              <Image
+              <img
                 src={poster}
                 alt={title || ''}
-                fill
-                sizes='(max-width: 768px) 100vw, 50vw'
-                className='object-cover opacity-50'
+                className='absolute inset-0 w-full h-full object-cover opacity-50'
               />
             ) : null}
             <div className='absolute inset-0 flex flex-col items-center justify-center gap-2 px-4 text-center'>

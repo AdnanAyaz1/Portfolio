@@ -32,40 +32,30 @@ import {
   SiReacttable,
 } from 'react-icons/si';
 
-// Replace each `videoUrl` with your Cloudinary (or other CDN) URL once uploaded.
-// Example Cloudinary URL: https://res.cloudinary.com/<cloud-name>/video/upload/v1234567890/motoarena-walkthrough.mp4
 const features = [
   {
     icon: <HiTruck />,
     title: 'Car Inventory Management',
     description:
       'Dealers manage full vehicle listings with rich specs, pricing, status (available / reserved / sold), and a TanStack Table admin view with filters and sorting.',
-    videoUrl: '',
-    poster: '/thumb1.jpg',
   },
   {
     icon: <HiCalendarDays />,
     title: 'Test Drive Scheduling',
     description:
       'Customers request test drives with date pickers, the dealer approves or reschedules from the admin, and both sides see real-time status updates.',
-    videoUrl: '',
-    poster: '/thumb2.jpg',
   },
   {
     icon: <HiPhoto />,
     title: 'Cloudinary Image Pipeline',
     description:
       'Multi-image uploads per car with Cloudinary transformations, signed URLs, and an editorial featured-cars carousel on the home page.',
-    videoUrl: '',
-    poster: '/thumb3.jpg',
   },
   {
     icon: <HiCog6Tooth />,
     title: 'Admin Dashboard & RBAC',
     description:
       'Role-based admin dashboard for inventory, reservations, saved cars, and user management \u2014 all behind NextAuth.js route guards.',
-    videoUrl: '',
-    poster: '/thumb4.jpg',
   },
 ];
 
@@ -98,6 +88,7 @@ const results = [
   { value: '4', label: 'Route groups', sub: 'auth, root, admin, api' },
   { value: '100%', label: 'Type-safe', sub: 'TypeScript + Zod end-to-end' },
   { value: 'RBAC', label: 'Built-in', sub: 'Customer, Dealer, Admin roles' },
+  { value: 'Live', label: 'In production', sub: 'ai-moto-arena.vercel.app' },
 ];
 
 const MotoArena = () => {
@@ -137,7 +128,7 @@ const MotoArena = () => {
               <span>Case Study {'\u2014'} 2023</span>
             </div>
             <h1 className='text-[36px] sm:text-[48px] xl:text-[64px] leading-[1.1] font-semibold mb-6'>
-              MotoArena
+              Motoverse
               <span className='block text-accent text-[18px] sm:text-[22px] xl:text-[26px] font-light mt-3'>
                 AI-Powered Car Dealership Platform
               </span>
@@ -154,7 +145,7 @@ const MotoArena = () => {
                 rel='noopener noreferrer'
                 className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-6 h-12 rounded-full text-sm tracking-wider transition-all duration-300'
               >
-                Live <HiArrowUpRight />
+                Visit live site <HiArrowUpRight />
               </a>
               <Link
                 href='/about'
@@ -188,9 +179,9 @@ const MotoArena = () => {
             exit='hidden'
           >
             <CaseStudyVideo
-              src={features[0].videoUrl}
-              poster={features[0].poster}
-              title='MotoArena \u2014 product walkthrough'
+              src='/MOTOVERSE-highlight.mp4'
+              poster='/moto.png'
+              title='Motoverse \u2014 product walkthrough'
             />
           </motion.div>
         </section>
@@ -204,7 +195,7 @@ const MotoArena = () => {
             viewport={{ once: true, amount: 0.3 }}
             className='bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8'
           >
-            <div className='text-xs uppercase tracking-[2px] text-accent mb-4'>The Problem</div>
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-4'>The Problem</div>
             <h3 className='text-xl sm:text-2xl font-semibold mb-4'>
               Dealerships still juggle spreadsheets and paper test-drive sheets.
             </h3>
@@ -222,7 +213,7 @@ const MotoArena = () => {
             viewport={{ once: true, amount: 0.3 }}
             className='bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8'
           >
-            <div className='text-xs uppercase tracking-[2px] text-accent mb-4'>The Solution</div>
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-4'>The Solution</div>
             <h3 className='text-xl sm:text-2xl font-semibold mb-4'>
               One Next.js app for inventory, scheduling, and admin.
             </h3>
@@ -243,31 +234,124 @@ const MotoArena = () => {
             viewport={{ once: true, amount: 0.3 }}
             className='text-center mb-10'
           >
-            <div className='text-xs uppercase tracking-[2px] text-accent mb-3'>Tech Stack</div>
-            <h2 className='text-3xl sm:text-4xl xl:text-5xl font-semibold'>
-              Modern Next.js, with AI in the loop.
-            </h2>
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Tech Stack</div>
+            <h2 className='h2'>Modern Next.js, with AI in the loop.</h2>
           </motion.div>
-
           <motion.div
-            variants={fadeIn('up', 0.3)}
+            variants={fadeIn('up', 0.4)}
             initial='hidden'
             whileInView='show'
             viewport={{ once: true, amount: 0.2 }}
-            className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-3 sm:gap-4'
+            className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-5'
           >
-            {techStack.map((t) => (
+            {techStack.map((tech, i) => (
               <div
-                key={t.name}
-                className='flex flex-col items-center justify-center gap-2 bg-white/[0.03] border border-white/10 rounded-xl py-5 px-2 hover:border-accent/40 transition-colors duration-300'
+                key={i}
+                className='group bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-accent/40 rounded-xl p-4 flex flex-col items-center justify-center text-center transition-all duration-300'
               >
-                <div className={`text-3xl ${t.color}`}>{t.icon}</div>
-                <div className='text-[11px] sm:text-xs text-white/70 text-center leading-tight'>
-                  {t.name}
+                <div className={`text-3xl sm:text-4xl mb-2 ${tech.color}`}>{tech.icon}</div>
+                <div className='text-[11px] sm:text-xs text-white/60 group-hover:text-white transition-colors'>
+                  {tech.name}
                 </div>
               </div>
             ))}
           </motion.div>
+        </section>
+
+        {/* walkthrough */}
+        <section className='mb-16 xl:mb-28'>
+          <motion.div
+            variants={fadeIn('up', 0.2)}
+            initial='hidden'
+            whileInView='show'
+            viewport={{ once: true, amount: 0.3 }}
+            className='text-center mb-10'
+          >
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Walkthrough</div>
+            <h2 className='h2'>See it in action.</h2>
+          </motion.div>
+
+          <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8'>
+            <motion.div
+              variants={fadeIn('right', 0.3)}
+              initial='hidden'
+              whileInView='show'
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <CaseStudyVideo
+                src='/Motoverse/Landing Page-highlight.mp4'
+                poster='/moto.png'
+                title='Motoverse \u2014 landing page'
+              />
+              <div className='mt-4 text-center'>
+                <div className='text-sm font-medium'>Landing Page</div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeIn('up', 0.3)}
+              initial='hidden'
+              whileInView='show'
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <CaseStudyVideo
+                src='/Motoverse/AI CAR SEARCH-highlight.mp4'
+                poster='/moto.png'
+                title='Motoverse \u2014 AI car search'
+              />
+              <div className='mt-4 text-center'>
+                <div className='text-sm font-medium'>AI Car Search</div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeIn('up', 0.3)}
+              initial='hidden'
+              whileInView='show'
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <CaseStudyVideo
+                src='/Motoverse/CAR FILTERS-highlight.mp4'
+                poster='/moto.png'
+                title='Motoverse \u2014 car filters'
+              />
+              <div className='mt-4 text-center'>
+                <div className='text-sm font-medium'>Car Filters</div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeIn('up', 0.3)}
+              initial='hidden'
+              whileInView='show'
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <CaseStudyVideo
+                src='/Motoverse/BOOKING FEATURE-highlight.mp4'
+                poster='/moto.png'
+                title='Motoverse \u2014 booking feature'
+              />
+              <div className='mt-4 text-center'>
+                <div className='text-sm font-medium'>Booking Feature</div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              variants={fadeIn('left', 0.3)}
+              initial='hidden'
+              whileInView='show'
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              <CaseStudyVideo
+                src='/Motoverse/ADMIN AND AUTH-highlight.mp4'
+                poster='/moto.png'
+                title='Motoverse \u2014 admin and auth'
+              />
+              <div className='mt-4 text-center'>
+                <div className='text-sm font-medium'>Admin &amp; Auth</div>
+              </div>
+            </motion.div>
+          </div>
         </section>
 
         {/* features */}
@@ -279,42 +363,44 @@ const MotoArena = () => {
             viewport={{ once: true, amount: 0.3 }}
             className='text-center mb-10'
           >
-            <div className='text-xs uppercase tracking-[2px] text-accent mb-3'>Key Features</div>
-            <h2 className='text-3xl sm:text-4xl xl:text-5xl font-semibold'>
-              From showroom to scheduling, in one app.
-            </h2>
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Key Features</div>
+            <h2 className='h2'>From showroom to scheduling, in one app.</h2>
+            <p className='text-white/50 mt-3 max-w-xl mx-auto text-sm sm:text-base'>
+              Every feature shown is production code &mdash; no mockups, no placeholders.
+            </p>
           </motion.div>
 
-          <div className='flex flex-col gap-16 xl:gap-24'>
-            {features.map((f, i) => (
-              <div
-                key={f.title}
-                className={`grid xl:grid-cols-2 gap-8 xl:gap-16 items-center ${
-                  i % 2 === 1 ? 'xl:[&>*:first-child]:order-2' : ''
-                }`}
+          <motion.div
+            variants={fadeIn('up', 0.4)}
+            initial='hidden'
+            whileInView='show'
+            viewport={{ once: true, amount: 0.1 }}
+            className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5'
+          >
+            {features.map((feature, i) => (
+              <motion.div
+                key={i}
+                variants={fadeIn('up', 0.15 + i * 0.05)}
+                initial='hidden'
+                whileInView='show'
+                viewport={{ once: true, amount: 0.1 }}
+                className='group bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-accent/40 rounded-2xl p-6 transition-all duration-300'
               >
-                <motion.div
-                  variants={fadeIn(i % 2 === 0 ? 'right' : 'left', 0.2)}
-                  initial='hidden'
-                  whileInView='show'
-                  viewport={{ once: true, amount: 0.3 }}
-                >
-                  <div className='text-4xl text-accent mb-4'>{f.icon}</div>
-                  <h3 className='text-2xl sm:text-3xl font-semibold mb-4'>{f.title}</h3>
-                  <p className='text-white/60 leading-relaxed max-w-[520px]'>{f.description}</p>
-                </motion.div>
-
-                <motion.div
-                  variants={fadeIn(i % 2 === 0 ? 'left' : 'right', 0.3)}
-                  initial='hidden'
-                  whileInView='show'
-                  viewport={{ once: true, amount: 0.3 }}
-                >
-                  <CaseStudyVideo src={f.videoUrl} poster={f.poster} title={f.title} />
-                </motion.div>
-              </div>
+                <div className='inline-flex items-center justify-center w-11 h-11 rounded-xl bg-accent/10 text-accent text-xl mb-4 group-hover:scale-110 transition-transform duration-300'>
+                  {feature.icon}
+                </div>
+                <div className='flex items-center gap-2 mb-2'>
+                  <span className='text-[10px] font-mono text-accent/60 bg-accent/10 px-2 py-0.5 rounded-full'>
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <h3 className='text-base sm:text-lg font-semibold'>{feature.title}</h3>
+                </div>
+                <p className='text-white/50 text-sm leading-relaxed'>
+                  {feature.description}
+                </p>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </section>
 
         {/* my role */}
@@ -324,31 +410,35 @@ const MotoArena = () => {
             initial='hidden'
             whileInView='show'
             viewport={{ once: true, amount: 0.3 }}
-            className='text-center mb-10'
+            className='max-w-3xl mb-10'
           >
-            <div className='text-xs uppercase tracking-[2px] text-accent mb-3'>My Role</div>
-            <h2 className='text-3xl sm:text-4xl xl:text-5xl font-semibold'>What I built.</h2>
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>My Role</div>
+            <h2 className='h2'>What I built.</h2>
+            <p className='text-white/60 mt-2'>
+              I led the full-stack development {'\u2014'} from schema design and auth architecture to
+              Cloudinary image pipelines, AI features, and the admin dashboard.
+            </p>
           </motion.div>
 
-          <motion.div
-            variants={fadeIn('up', 0.3)}
+          <motion.ul
+            variants={fadeIn('up', 0.4)}
             initial='hidden'
             whileInView='show'
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.15 }}
             className='grid md:grid-cols-2 gap-4 sm:gap-6'
           >
-            {contributions.map((c, i) => (
-              <div
+            {contributions.map((item, i) => (
+              <li
                 key={i}
-                className='flex gap-4 bg-white/[0.03] border border-white/10 rounded-2xl p-5 sm:p-6 hover:border-accent/30 transition-colors duration-300'
+                className='flex gap-4 bg-white/[0.03] border border-white/10 rounded-xl p-5'
               >
-                <div className='flex-shrink-0 w-10 h-10 rounded-full bg-accent/10 border border-accent/30 text-accent text-sm font-semibold flex items-center justify-center'>
+                <div className='flex-shrink-0 w-8 h-8 rounded-full bg-accent/15 text-accent flex items-center justify-center text-sm font-semibold'>
                   {String(i + 1).padStart(2, '0')}
                 </div>
-                <p className='text-white/70 leading-relaxed text-sm sm:text-base'>{c}</p>
-              </div>
+                <p className='text-white/70 text-sm sm:text-base leading-relaxed'>{item}</p>
+              </li>
             ))}
-          </motion.div>
+          </motion.ul>
         </section>
 
         {/* results */}
@@ -360,16 +450,16 @@ const MotoArena = () => {
             viewport={{ once: true, amount: 0.3 }}
             className='text-center mb-10'
           >
-            <div className='text-xs uppercase tracking-[2px] text-accent mb-3'>Outcomes</div>
-            <h2 className='text-3xl sm:text-4xl xl:text-5xl font-semibold'>Shipped end-to-end.</h2>
+            <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Outcomes</div>
+            <h2 className='h2'>Shipped and live.</h2>
           </motion.div>
 
           <motion.div
-            variants={fadeIn('up', 0.3)}
+            variants={fadeIn('up', 0.4)}
             initial='hidden'
             whileInView='show'
             viewport={{ once: true, amount: 0.2 }}
-            className='grid md:grid-cols-3 gap-4 sm:gap-6'
+            className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6'
           >
             {results.map((r, i) => (
               <div
@@ -393,10 +483,9 @@ const MotoArena = () => {
           className='flex flex-col sm:flex-row items-center justify-between gap-6 bg-gradient-to-r from-accent/15 via-accent/5 to-transparent border border-accent/20 rounded-2xl p-6 sm:p-10 mb-24 sm:mb-32 xl:mb-40'
         >
           <div>
-            <h3 className='text-xl sm:text-2xl font-semibold mb-2'>Want the deep dive?</h3>
+            <h3 className='text-xl sm:text-2xl font-semibold mb-2'>Want to see it live?</h3>
             <p className='text-white/60 text-sm sm:text-base'>
-              I can walk you through the Prisma schema, the admin RBAC layer, or the Cloudinary
-              image pipeline.
+              Try Motoverse in production or jump back to the rest of my work.
             </p>
           </div>
           <div className='flex gap-3'>
@@ -406,7 +495,7 @@ const MotoArena = () => {
               rel='noopener noreferrer'
               className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-6 h-12 rounded-full text-sm tracking-wider transition-all duration-300'
             >
-              Live <HiArrowUpRight />
+              Visit site <HiArrowUpRight />
             </a>
             <Link
               href='/about'
