@@ -91,7 +91,7 @@ const results = [
   { value: '4', label: 'Role-based apps', sub: 'Admin, Client, Candidate, Vendor' },
   { value: '1', label: 'Monorepo', sub: 'Shared packages across web + server' },
   { value: '100%', label: 'Reused UI', sub: 'One design system, zero duplication' },
-  { value: 'Live', label: 'In production', sub: 'expedientvms.com' },
+  { value: '3', label: 'Live portals', sub: 'Client, Candidate, Vendor' },
 ];
 
 const Expedient = () => {
@@ -143,19 +143,29 @@ const Expedient = () => {
             </p>
             <div className='flex flex-wrap gap-3'>
               <a
-                href='https://www.expedientvms.com'
+                href='https://client.expedientvms.com/auth'
                 target='_blank'
                 rel='noopener noreferrer'
-                className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-6 h-12 rounded-full text-sm tracking-wider transition-all duration-300'
+                className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-5 h-10 sm:h-12 rounded-full text-xs sm:text-sm tracking-wider transition-all duration-300'
               >
-                Visit live site <HiArrowUpRight />
+                Client Portal <HiArrowUpRight />
               </a>
-              <Link
-                href='/about'
-                className='inline-flex items-center gap-2 border border-white/20 hover:border-accent hover:text-accent px-6 h-12 rounded-full text-sm tracking-wider transition-all duration-300'
+              <a
+                href='https://candidate.expedientvms.com/signIn'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-5 h-10 sm:h-12 rounded-full text-xs sm:text-sm tracking-wider transition-all duration-300'
               >
-                All projects
-              </Link>
+                Candidate Portal <HiArrowUpRight />
+              </a>
+              <a
+                href='https://vendor.expedientvms.com/auth'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-5 h-10 sm:h-12 rounded-full text-xs sm:text-sm tracking-wider transition-all duration-300'
+              >
+                Vendor Portal <HiArrowUpRight />
+              </a>
             </div>
 
             {/* meta */}
@@ -396,21 +406,31 @@ const Expedient = () => {
               Try Expedient VMS in production or jump back to the rest of my work.
             </p>
           </div>
-          <div className='flex gap-3'>
+          <div className='flex flex-wrap gap-3'>
             <a
-              href='https://www.expedientvms.com'
+              href='https://client.expedientvms.com/auth'
               target='_blank'
               rel='noopener noreferrer'
-              className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-6 h-12 rounded-full text-sm tracking-wider transition-all duration-300'
+              className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-5 h-10 sm:h-12 rounded-full text-xs sm:text-sm tracking-wider transition-all duration-300'
             >
-              Visit site <HiArrowUpRight />
+              Client <HiArrowUpRight />
             </a>
-            <Link
-              href='/about'
-              className='inline-flex items-center gap-2 border border-white/20 hover:border-accent hover:text-accent px-6 h-12 rounded-full text-sm tracking-wider transition-all duration-300'
+            <a
+              href='https://candidate.expedientvms.com/signIn'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-5 h-10 sm:h-12 rounded-full text-xs sm:text-sm tracking-wider transition-all duration-300'
             >
-              All projects
-            </Link>
+              Candidate <HiArrowUpRight />
+            </a>
+            <a
+              href='https://vendor.expedientvms.com/auth'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='inline-flex items-center gap-2 bg-accent hover:bg-accent/90 text-white px-5 h-10 sm:h-12 rounded-full text-xs sm:text-sm tracking-wider transition-all duration-300'
+            >
+              Vendor <HiArrowUpRight />
+            </a>
           </div>
         </motion.div>
       </div>
