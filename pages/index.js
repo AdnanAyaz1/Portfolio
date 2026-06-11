@@ -31,8 +31,8 @@ const Home = () => {
         <ParticlesContainer />
       </Suspense>
       {/* text */}
-      <div className='w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10'>
-        <div className='text-center flex flex-col justify-center pt-16 sm:pt-28 xl:pt-40 xl:text-left h-full container mx-auto'>
+      <div className='w-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10 relative z-10'>
+        <div className='text-center flex flex-col justify-center pt-16 sm:pt-28 xl:pt-40 xl:text-left container mx-auto px-4 sm:px-6'>
           {/* title */}
           <motion.div
             variants={fadeIn('down', 0.2)}
@@ -116,8 +116,8 @@ const Home = () => {
         </div>
       </div>
       {/* image */}
-      <div className='w-full max-w-[1200px] h-full absolute right-0 bottom-0 pointer-events-none overflow-hidden'>
-        <div className='bg-none xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0'>
+      <div className='w-full max-w-[1200px] absolute right-0 bottom-0 pointer-events-none overflow-hidden'>
+        <div className='bg-none xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat w-full absolute mix-blend-color-dodge translate-z-0'>
         </div>
         {/* avatar */}
         <motion.div 
@@ -126,7 +126,7 @@ const Home = () => {
           animate='show' 
           exit='hidden'
           transition={{ duration: 1, ease: 'easeInOut' }}
-          className='w-full h-full max-w-[min(737px,90vw)] max-h-[min(678px,90vh)] absolute bottom-0 right-0 lg:right-[8%]'
+          className='w-full max-w-[min(737px,90vw)] max-h-[min(678px,90vh)] absolute bottom-0 right-0 lg:right-[8%]'
         >
           <Avatar />
         </motion.div>
