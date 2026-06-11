@@ -26,7 +26,7 @@ const TypewriterComponent = dynamic(() => import('typewriter-effect'), {
 
 const Home = () => {
   return (
-    <div className='bg-primary/60 h-full'>
+    <div className='bg-primary/60 min-h-full'>
       <Suspense fallback={<Loading />}>
         <ParticlesContainer />
       </Suspense>

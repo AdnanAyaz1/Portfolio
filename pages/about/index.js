@@ -168,7 +168,7 @@ const aboutData = [
 const About = () => {
   const [index, setIndex] = useState(0);
   return (
-    <div className='h-full bg-primary/30 pt-20 pb-32 sm:pt-24 sm:pb-40 xl:py-32 text-center xl:text-left mb-24 overflow-y-auto'>
+    <div className='min-h-full bg-primary/30 pt-20 pb-32 sm:pt-24 sm:pb-40 xl:py-32 text-center xl:text-left mb-24'>
       <Transition />
       <div className='container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6 px-4'>
         {/* text */}
