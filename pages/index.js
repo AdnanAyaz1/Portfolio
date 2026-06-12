@@ -73,7 +73,7 @@ const Home = () => {
               onClick={() => {
                 const link = document.createElement('a');
                 link.href = '/Adnan_Ayaz_Resume_ATS (2).pdf';
-                link.download = 'Adnan_Ayaz_Resume_ATS.pdf';
+                link.download = 'Adnan_Ayaz_Resume.pdf';
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
@@ -99,7 +99,7 @@ const Home = () => {
               onClick={() => {
                 const link = document.createElement('a');
                 link.href = '/Adnan_Ayaz_Resume_ATS (2).pdf';
-                link.download = 'Adnan_Ayaz_Resume_ATS.pdf';
+                link.download = 'Adnan_Ayaz_Resume.pdf';
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);

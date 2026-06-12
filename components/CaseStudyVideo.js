@@ -1,5 +1,8 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState, memo } from 'react';
 import { HiPlay, HiPause, HiSpeakerWave, HiSpeakerXMark, HiArrowsPointingOut, HiXMark } from 'react-icons/hi2';
+
+// Global tracker: only one video plays at a time across all instances
+let currentlyPlayingVideo = null;
 
 const CaseStudyVideo = ({ src, poster, title, aspectRatio = '16/9' }) => {
   const videoRef = useRef(null);
@@ -10,42 +13,21 @@ const CaseStudyVideo = ({ src, poster, title, aspectRatio = '16/9' }) => {
   const [hasInteracted, setHasInteracted] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  useEffect(() => {
-    if (!src || !videoRef.current || !containerRef.current) return;
-
-    const video = videoRef.current;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      },
-      { threshold: 0.4 }
-    );
-
-    observer.observe(containerRef.current);
-    return () => observer.disconnect();
-  }, [src]);
-
-  useEffect(() => {
-    if (isFullscreen && modalVideoRef.current) {
-      modalVideoRef.current.play().catch(() => {});
-      document.body.style.overflow = 'hidden';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isFullscreen]);
-
   const togglePlay = () => {
     if (!videoRef.current) return;
     setHasInteracted(true);
     if (videoRef.current.paused) {
+      // Pause any other playing video
+      if (currentlyPlayingVideo && currentlyPlayingVideo !== videoRef.current) {
+        currentlyPlayingVideo.pause();
+      }
       videoRef.current.play();
+      currentlyPlayingVideo = videoRef.current;
     } else {
       videoRef.current.pause();
+      if (currentlyPlayingVideo === videoRef.current) {
+        currentlyPlayingVideo = null;
+      }
     }
   };
 
@@ -59,19 +41,22 @@ const CaseStudyVideo = ({ src, poster, title, aspectRatio = '16/9' }) => {
   const openFullscreen = (e) => {
     e.stopPropagation();
     videoRef.current?.pause();
+    setIsPlaying(false);
     setIsFullscreen(true);
+    document.body.style.overflow = 'hidden';
   };
 
   const closeFullscreen = () => {
     modalVideoRef.current?.pause();
     setIsFullscreen(false);
+    document.body.style.overflow = '';
   };
 
   return (
     <>
       <div
         ref={containerRef}
-        className='relative w-full overflow-hidden rounded-2xl border border-white/10 bg-black/40 backdrop-blur-sm group'
+        className='relative w-full overflow-hidden rounded-2xl border border-white/10 bg-black/40 group'
         style={{ aspectRatio }}
       >
         {src ? (
@@ -84,6 +69,7 @@ const CaseStudyVideo = ({ src, poster, title, aspectRatio = '16/9' }) => {
               loop
               playsInline
               preload='metadata'
+              loading='lazy'
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
               onClick={togglePlay}
@@ -130,6 +116,7 @@ const CaseStudyVideo = ({ src, poster, title, aspectRatio = '16/9' }) => {
               <img
                 src={poster}
                 alt={title || ''}
+                loading='lazy'
                 className='absolute inset-0 w-full h-full object-cover opacity-50'
               />
             ) : null}
@@ -146,7 +133,7 @@ const CaseStudyVideo = ({ src, poster, title, aspectRatio = '16/9' }) => {
       {/* fullscreen modal */}
       {isFullscreen && src && (
         <div
-          className='fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 sm:p-8'
+          className='fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 sm:p-8'
           onClick={closeFullscreen}
         >
           <button
@@ -182,4 +169,4 @@ const CaseStudyVideo = ({ src, poster, title, aspectRatio = '16/9' }) => {
   );
 };
 
-export default CaseStudyVideo;
+export default memo(CaseStudyVideo);

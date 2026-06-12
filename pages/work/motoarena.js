@@ -16,7 +16,6 @@ import {
   HiCog6Tooth,
   HiKey,
   HiPaintBrush,
-  HiSparkles,
 } from 'react-icons/hi2';
 import {
   SiNextdotjs,
@@ -186,15 +185,15 @@ const MotoArena = () => {
           </motion.div>
         </section>
 
-        {/* overview */}
-        <section className='grid md:grid-cols-2 gap-8 mb-16 xl:mb-28'>
-          <motion.div
-            variants={fadeIn('up', 0.2)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.3 }}
-            className='bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8'
-          >
+        {/* overview — single whileInView wrapper */}
+        <motion.section
+          variants={fadeIn('up', 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.2 }}
+          className='grid md:grid-cols-2 gap-8 mb-16 xl:mb-28'
+        >
+          <div className='bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8'>
             <div className='text-xs uppercase tracking-[3px] text-accent mb-4'>The Problem</div>
             <h3 className='text-xl sm:text-2xl font-semibold mb-4'>
               Dealerships still juggle spreadsheets and paper test-drive sheets.
@@ -204,15 +203,9 @@ const MotoArena = () => {
               so dealers lose leads, customers bounce, and the admin team has no real-time view of
               what is moving on the lot.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={fadeIn('up', 0.4)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.3 }}
-            className='bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8'
-          >
+          <div className='bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8'>
             <div className='text-xs uppercase tracking-[3px] text-accent mb-4'>The Solution</div>
             <h3 className='text-xl sm:text-2xl font-semibold mb-4'>
               One Next.js app for inventory, scheduling, and admin.
@@ -222,28 +215,22 @@ const MotoArena = () => {
               the back, Cloudinary for media, and Google Gen AI for smart features {'\u2014'} so
               dealers, customers, and admins all work from the same source of truth.
             </p>
-          </motion.div>
-        </section>
+          </div>
+        </motion.section>
 
-        {/* tech stack */}
-        <section className='mb-16 xl:mb-28'>
-          <motion.div
-            variants={fadeIn('up', 0.2)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.3 }}
-            className='text-center mb-10'
-          >
+        {/* tech stack — single whileInView wrapper */}
+        <motion.section
+          variants={fadeIn('up', 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.2 }}
+          className='mb-16 xl:mb-28'
+        >
+          <div className='text-center mb-10'>
             <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Tech Stack</div>
             <h2 className='h2'>Modern Next.js, with AI in the loop.</h2>
-          </motion.div>
-          <motion.div
-            variants={fadeIn('up', 0.4)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.2 }}
-            className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-5'
-          >
+          </div>
+          <div className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 lg:gap-5'>
             {techStack.map((tech, i) => (
               <div
                 key={i}
@@ -255,135 +242,60 @@ const MotoArena = () => {
                 </div>
               </div>
             ))}
-          </motion.div>
-        </section>
+          </div>
+        </motion.section>
 
-        {/* walkthrough */}
-        <section className='mb-16 xl:mb-28'>
-          <motion.div
-            variants={fadeIn('up', 0.2)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.3 }}
-            className='text-center mb-10'
-          >
+        {/* walkthrough — single whileInView wrapper */}
+        <motion.section
+          variants={fadeIn('up', 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.1 }}
+          className='mb-16 xl:mb-28'
+        >
+          <div className='text-center mb-10'>
             <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Walkthrough</div>
             <h2 className='h2'>See it in action.</h2>
-          </motion.div>
+          </div>
 
           <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8'>
-            <motion.div
-              variants={fadeIn('right', 0.3)}
-              initial='hidden'
-              whileInView='show'
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <CaseStudyVideo
-                src='/Motoverse/Landing page.mp4'
-                poster='/moto.png'
-                title='Motoverse \u2014 landing page'
-              />
-              <div className='mt-4 text-center'>
-                <div className='text-sm font-medium'>Landing Page</div>
+            {[
+              { src: '/Motoverse/Landing page.mp4', title: 'Motoverse \u2014 landing page', label: 'Landing Page' },
+              { src: '/Motoverse/AI CAR SEARCH-highlight.mp4', title: 'Motoverse \u2014 AI car search', label: 'AI Car Search' },
+              { src: '/Motoverse/CAR FILTERS-highlight.mp4', title: 'Motoverse \u2014 car filters', label: 'Car Filters' },
+              { src: '/Motoverse/BOOKING FEATURE-highlight.mp4', title: 'Motoverse \u2014 booking feature', label: 'Booking Feature' },
+              { src: '/Motoverse/ADMIN AND AUTH-highlight.mp4', title: 'Motoverse \u2014 admin and auth', label: 'Admin & Auth' },
+            ].map((video, i) => (
+              <div key={i}>
+                <CaseStudyVideo src={video.src} poster='/moto.png' title={video.title} />
+                <div className='mt-4 text-center'>
+                  <div className='text-sm font-medium'>{video.label}</div>
+                </div>
               </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeIn('up', 0.3)}
-              initial='hidden'
-              whileInView='show'
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <CaseStudyVideo
-                src='/Motoverse/AI CAR SEARCH-highlight.mp4'
-                poster='/moto.png'
-                title='Motoverse \u2014 AI car search'
-              />
-              <div className='mt-4 text-center'>
-                <div className='text-sm font-medium'>AI Car Search</div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeIn('up', 0.3)}
-              initial='hidden'
-              whileInView='show'
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <CaseStudyVideo
-                src='/Motoverse/CAR FILTERS-highlight.mp4'
-                poster='/moto.png'
-                title='Motoverse \u2014 car filters'
-              />
-              <div className='mt-4 text-center'>
-                <div className='text-sm font-medium'>Car Filters</div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeIn('up', 0.3)}
-              initial='hidden'
-              whileInView='show'
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <CaseStudyVideo
-                src='/Motoverse/BOOKING FEATURE-highlight.mp4'
-                poster='/moto.png'
-                title='Motoverse \u2014 booking feature'
-              />
-              <div className='mt-4 text-center'>
-                <div className='text-sm font-medium'>Booking Feature</div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              variants={fadeIn('left', 0.3)}
-              initial='hidden'
-              whileInView='show'
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <CaseStudyVideo
-                src='/Motoverse/ADMIN AND AUTH-highlight.mp4'
-                poster='/moto.png'
-                title='Motoverse \u2014 admin and auth'
-              />
-              <div className='mt-4 text-center'>
-                <div className='text-sm font-medium'>Admin &amp; Auth</div>
-              </div>
-            </motion.div>
+            ))}
           </div>
-        </section>
+        </motion.section>
 
-        {/* features */}
-        <section className='mb-16 xl:mb-28'>
-          <motion.div
-            variants={fadeIn('up', 0.2)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.3 }}
-            className='text-center mb-10'
-          >
+        {/* features — single whileInView wrapper */}
+        <motion.section
+          variants={fadeIn('up', 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.1 }}
+          className='mb-16 xl:mb-28'
+        >
+          <div className='text-center mb-10'>
             <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Key Features</div>
             <h2 className='h2'>From showroom to scheduling, in one app.</h2>
             <p className='text-white/50 mt-3 max-w-xl mx-auto text-sm sm:text-base'>
               Every feature shown is production code &mdash; no mockups, no placeholders.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={fadeIn('up', 0.4)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.1 }}
-            className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5'
-          >
+          <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5'>
             {features.map((feature, i) => (
-              <motion.div
+              <div
                 key={i}
-                variants={fadeIn('up', 0.15 + i * 0.05)}
-                initial='hidden'
-                whileInView='show'
-                viewport={{ once: true, amount: 0.1 }}
                 className='group bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-accent/40 rounded-2xl p-6 transition-all duration-300'
               >
                 <div className='inline-flex items-center justify-center w-11 h-11 rounded-xl bg-accent/10 text-accent text-xl mb-4 group-hover:scale-110 transition-transform duration-300'>
@@ -398,35 +310,29 @@ const MotoArena = () => {
                 <p className='text-white/50 text-sm leading-relaxed'>
                   {feature.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
-        </section>
+          </div>
+        </motion.section>
 
-        {/* my role */}
-        <section className='mb-16 xl:mb-28'>
-          <motion.div
-            variants={fadeIn('up', 0.2)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.3 }}
-            className='max-w-3xl mb-10'
-          >
+        {/* my role — single whileInView wrapper */}
+        <motion.section
+          variants={fadeIn('up', 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.1 }}
+          className='mb-16 xl:mb-28'
+        >
+          <div className='max-w-3xl mb-10'>
             <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>My Role</div>
             <h2 className='h2'>What I built.</h2>
             <p className='text-white/60 mt-2'>
               I led the full-stack development {'\u2014'} from schema design and auth architecture to
               Cloudinary image pipelines, AI features, and the admin dashboard.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.ul
-            variants={fadeIn('up', 0.4)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.15 }}
-            className='grid md:grid-cols-2 gap-4 sm:gap-6'
-          >
+          <ul className='grid md:grid-cols-2 gap-4 sm:gap-6'>
             {contributions.map((item, i) => (
               <li
                 key={i}
@@ -438,29 +344,23 @@ const MotoArena = () => {
                 <p className='text-white/70 text-sm sm:text-base leading-relaxed'>{item}</p>
               </li>
             ))}
-          </motion.ul>
-        </section>
+          </ul>
+        </motion.section>
 
-        {/* results */}
-        <section className='mb-16 xl:mb-28'>
-          <motion.div
-            variants={fadeIn('up', 0.2)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.3 }}
-            className='text-center mb-10'
-          >
+        {/* results — single whileInView wrapper */}
+        <motion.section
+          variants={fadeIn('up', 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.2 }}
+          className='mb-16 xl:mb-28'
+        >
+          <div className='text-center mb-10'>
             <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Outcomes</div>
             <h2 className='h2'>Shipped and live.</h2>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={fadeIn('up', 0.4)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.2 }}
-            className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6'
-          >
+          <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6'>
             {results.map((r, i) => (
               <div
                 key={i}
@@ -471,8 +371,8 @@ const MotoArena = () => {
                 <div className='text-xs text-white/50'>{r.sub}</div>
               </div>
             ))}
-          </motion.div>
-        </section>
+          </div>
+        </motion.section>
 
         {/* CTA */}
         <motion.div

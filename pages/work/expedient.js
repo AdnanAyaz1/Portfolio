@@ -14,7 +14,6 @@ import {
   HiChatBubbleLeftRight,
   HiCloudArrowUp,
   HiUsers,
-  HiDocumentText,
 } from 'react-icons/hi2';
 import { FaReact } from 'react-icons/fa';
 import {
@@ -199,15 +198,15 @@ const Expedient = () => {
           </motion.div>
         </section>
 
-        {/* overview */}
-        <section className='grid md:grid-cols-2 gap-8 mb-16 xl:mb-28'>
-          <motion.div
-            variants={fadeIn('up', 0.2)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.3 }}
-            className='bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8'
-          >
+        {/* overview — single whileInView */}
+        <motion.section
+          variants={fadeIn('up', 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.2 }}
+          className='grid md:grid-cols-2 gap-8 mb-16 xl:mb-28'
+        >
+          <div className='bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8'>
             <div className='text-xs uppercase tracking-[3px] text-accent mb-4'>The Problem</div>
             <h3 className='text-xl sm:text-2xl font-semibold mb-4'>
               Staffing agencies run on stitched-together tools.
@@ -218,15 +217,9 @@ const Expedient = () => {
               through the cracks, timesheet approvals lag, and there is no single view of the
               business.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={fadeIn('up', 0.4)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.3 }}
-            className='bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8'
-          >
+          <div className='bg-white/[0.03] border border-white/10 rounded-2xl p-6 sm:p-8'>
             <div className='text-xs uppercase tracking-[3px] text-accent mb-4'>The Solution</div>
             <h3 className='text-xl sm:text-2xl font-semibold mb-4'>
               One monorepo. Four role-based apps. One backend.
@@ -236,28 +229,22 @@ const Expedient = () => {
               vendor) share one design system and consume a single Express + MySQL API {'\u2014'}
               keeping data consistent and shipping faster.
             </p>
-          </motion.div>
-        </section>
+          </div>
+        </motion.section>
 
-        {/* tech stack */}
-        <section className='mb-16 xl:mb-28'>
-          <motion.div
-            variants={fadeIn('up', 0.2)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.3 }}
-            className='text-center mb-10'
-          >
+        {/* tech stack — single whileInView */}
+        <motion.section
+          variants={fadeIn('up', 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.2 }}
+          className='mb-16 xl:mb-28'
+        >
+          <div className='text-center mb-10'>
             <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Tech Stack</div>
             <h2 className='h2'>Built to scale across teams.</h2>
-          </motion.div>
-          <motion.div
-            variants={fadeIn('up', 0.4)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.2 }}
-            className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-5'
-          >
+          </div>
+          <div className='grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-5'>
             {techStack.map((tech, i) => (
               <div
                 key={i}
@@ -269,39 +256,29 @@ const Expedient = () => {
                 </div>
               </div>
             ))}
-          </motion.div>
-        </section>
+          </div>
+        </motion.section>
 
-        {/* features */}
-        <section className='mb-16 xl:mb-28'>
-          <motion.div
-            variants={fadeIn('up', 0.2)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.3 }}
-            className='text-center mb-10'
-          >
+        {/* features — single whileInView */}
+        <motion.section
+          variants={fadeIn('up', 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.1 }}
+          className='mb-16 xl:mb-28'
+        >
+          <div className='text-center mb-10'>
             <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Key Features</div>
             <h2 className='h2'>What the platform does.</h2>
             <p className='text-white/50 mt-3 max-w-xl mx-auto text-sm sm:text-base'>
               Every feature shown is production code &mdash; no mockups, no placeholders.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={fadeIn('up', 0.4)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.1 }}
-            className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5'
-          >
+          <div className='grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5'>
             {features.map((feature, i) => (
-              <motion.div
+              <div
                 key={i}
-                variants={fadeIn('up', 0.15 + i * 0.05)}
-                initial='hidden'
-                whileInView='show'
-                viewport={{ once: true, amount: 0.1 }}
                 className='group bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-accent/40 rounded-2xl p-6 transition-all duration-300'
               >
                 <div className='inline-flex items-center justify-center w-11 h-11 rounded-xl bg-accent/10 text-accent text-xl mb-4 group-hover:scale-110 transition-transform duration-300'>
@@ -316,35 +293,29 @@ const Expedient = () => {
                 <p className='text-white/50 text-sm leading-relaxed'>
                   {feature.description}
                 </p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
-        </section>
+          </div>
+        </motion.section>
 
-        {/* my role */}
-        <section className='mb-16 xl:mb-28'>
-          <motion.div
-            variants={fadeIn('up', 0.2)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.3 }}
-            className='max-w-3xl mb-10'
-          >
+        {/* my role — single whileInView */}
+        <motion.section
+          variants={fadeIn('up', 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.1 }}
+          className='mb-16 xl:mb-28'
+        >
+          <div className='max-w-3xl mb-10'>
             <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>My Role</div>
             <h2 className='h2'>What I built.</h2>
             <p className='text-white/60 mt-2'>
               I led the full-stack development {'\u2014'} from monorepo architecture and role-based
               frontend apps to the Express backend, AWS integrations, and Twilio messaging layer.
             </p>
-          </motion.div>
+          </div>
 
-          <motion.ul
-            variants={fadeIn('up', 0.4)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.15 }}
-            className='grid md:grid-cols-2 gap-4 sm:gap-6'
-          >
+          <ul className='grid md:grid-cols-2 gap-4 sm:gap-6'>
             {contributions.map((item, i) => (
               <li
                 key={i}
@@ -356,29 +327,23 @@ const Expedient = () => {
                 <p className='text-white/70 text-sm sm:text-base leading-relaxed'>{item}</p>
               </li>
             ))}
-          </motion.ul>
-        </section>
+          </ul>
+        </motion.section>
 
-        {/* results */}
-        <section className='mb-16 xl:mb-28'>
-          <motion.div
-            variants={fadeIn('up', 0.2)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.3 }}
-            className='text-center mb-10'
-          >
+        {/* results — single whileInView */}
+        <motion.section
+          variants={fadeIn('up', 0.2)}
+          initial='hidden'
+          whileInView='show'
+          viewport={{ once: true, amount: 0.2 }}
+          className='mb-16 xl:mb-28'
+        >
+          <div className='text-center mb-10'>
             <div className='text-xs uppercase tracking-[3px] text-accent mb-3'>Outcomes</div>
             <h2 className='h2'>Shipped and live.</h2>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={fadeIn('up', 0.4)}
-            initial='hidden'
-            whileInView='show'
-            viewport={{ once: true, amount: 0.2 }}
-            className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6'
-          >
+          <div className='grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6'>
             {results.map((r, i) => (
               <div
                 key={i}
@@ -389,8 +354,8 @@ const Expedient = () => {
                 <div className='text-xs text-white/50'>{r.sub}</div>
               </div>
             ))}
-          </motion.div>
-        </section>
+          </div>
+        </motion.section>
 
         {/* CTA */}
         <motion.div

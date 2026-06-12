@@ -18,7 +18,7 @@ const PremiumLoader = ({ onComplete }) => {
         }
         return prev + Math.random() * 15 + 5;
       });
-    }, 80);
+    }, 200);
 
     return () => clearInterval(interval);
   }, [onComplete]);
@@ -57,12 +57,12 @@ const PremiumLoader = ({ onComplete }) => {
 
           {/* logo / name */}
           <div className="relative z-10 flex flex-col items-center">
-            {/* animated lines */}
+            {/* animated lines — GPU-accelerated scaleX */}
             <div className="flex items-center gap-3 mb-6">
               <motion.div
-                className="h-[1px] bg-accent"
-                initial={{ width: 0 }}
-                animate={{ width: 60 }}
+                className="h-[1px] bg-accent w-[60px] origin-left"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
                 transition={{ delay: 0.2, duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
               />
               <motion.span
@@ -74,9 +74,9 @@ const PremiumLoader = ({ onComplete }) => {
                 Portfolio
               </motion.span>
               <motion.div
-                className="h-[1px] bg-accent"
-                initial={{ width: 0 }}
-                animate={{ width: 60 }}
+                className="h-[1px] bg-accent w-[60px] origin-right"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
                 transition={{ delay: 0.2, duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
               />
             </div>
@@ -109,7 +109,7 @@ const PremiumLoader = ({ onComplete }) => {
               Full Stack Developer
             </motion.p>
 
-            {/* progress bar */}
+            {/* progress bar — GPU-accelerated scaleX */}
             <motion.div
               className="mt-10 w-48 sm:w-56"
               initial={{ opacity: 0 }}
@@ -124,9 +124,9 @@ const PremiumLoader = ({ onComplete }) => {
               </div>
               <div className="h-[2px] w-full bg-white/10 rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full bg-accent rounded-full"
-                  initial={{ width: '0%' }}
-                  animate={{ width: `${Math.min(progress, 100)}%` }}
+                  className="h-full bg-accent rounded-full origin-left"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: progress / 100 }}
                   transition={{ duration: 0.3, ease: 'easeOut' }}
                 />
               </div>
