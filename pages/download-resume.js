@@ -84,7 +84,24 @@ const DownloadResume = () => {
 
         {/* Resume */}
         <div className='max-w-4xl mx-auto px-4 py-8'>
-          <div className='bg-white rounded-xl shadow-2xl overflow-hidden ring-1 ring-black/5'>
+          <style>{`
+            .ats-resume-container * {
+              color: #000000 !important;
+            }
+            .ats-resume-container p {
+              color: #000000 !important;
+            }
+            .ats-resume-container li {
+              color: #000000 !important;
+            }
+            .ats-resume-container span {
+              color: #000000 !important;
+            }
+            .ats-resume-container div {
+              color: #000000 !important;
+            }
+          `}</style>
+          <div className='bg-white rounded-xl shadow-2xl overflow-hidden ring-1 ring-black/5 ats-resume-container'>
             <ATSResume resumeRef={resumeRef} />
           </div>
 
