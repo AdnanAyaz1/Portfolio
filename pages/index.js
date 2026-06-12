@@ -6,6 +6,7 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Loading from '../components/Loading';
+import { useRouter } from 'next/router';
 
 // Dynamically import the heavy Particles component
 const ParticlesContainer = dynamic(() => import('../components/ParticlesContainer'), {
@@ -25,6 +26,7 @@ const TypewriterComponent = dynamic(() => import('typewriter-effect'), {
 });
 
 const Home = () => {
+  const router = useRouter();
   return (
     <div className='bg-primary/60 h-full'>
       <Suspense fallback={<Loading />}>
@@ -70,14 +72,7 @@ const Home = () => {
           <div className='flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center xl:hidden relative'>
             <ProjectsBtn />
             <button
-              onClick={() => {
-                const link = document.createElement('a');
-                link.href = '/Adnan_Ayaz_Resume_ATS (2).pdf';
-                link.download = 'Adnan_Ayaz_Resume.pdf';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
+              onClick={() => router.push('/download-resume')}
               className='btn rounded-full border border-white/50 px-6 sm:px-8 text-sm tracking-wider transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden hover:border-accent group relative cursor-pointer'
             >
               <span className='relative z-10 group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'>Resume</span>
@@ -96,14 +91,7 @@ const Home = () => {
           >
             <ProjectsBtn />
             <button
-              onClick={() => {
-                const link = document.createElement('a');
-                link.href = '/Adnan_Ayaz_Resume_ATS (2).pdf';
-                link.download = 'Adnan_Ayaz_Resume.pdf';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              }}
+              onClick={() => router.push('/download-resume')}
               className='btn rounded-full border border-white/50 px-8 text-sm tracking-wider transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden hover:border-accent group relative cursor-pointer'
             >
               <span className='relative z-10 group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'>Resume</span>
