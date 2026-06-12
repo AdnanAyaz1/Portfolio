@@ -6,7 +6,6 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Loading from '../components/Loading';
-import { useRouter } from 'next/router';
 
 // Dynamically import the heavy Particles component
 const ParticlesContainer = dynamic(() => import('../components/ParticlesContainer'), {
@@ -26,7 +25,6 @@ const TypewriterComponent = dynamic(() => import('typewriter-effect'), {
 });
 
 const Home = () => {
-  const router = useRouter();
   return (
     <div className='bg-primary/60 h-full'>
       <Suspense fallback={<Loading />}>
@@ -71,8 +69,9 @@ const Home = () => {
           {/* btns */}
           <div className='flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center xl:hidden relative'>
             <ProjectsBtn />
-            <button
-              onClick={() => router.push('/download-resume')}
+            <a
+              href='/Adnan_Ayaz_Resume (2).pdf'
+              download='Adnan_Ayaz_Resume.pdf'
               className='btn rounded-full border border-white/50 px-6 sm:px-8 text-sm tracking-wider transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden hover:border-accent group relative cursor-pointer'
             >
               <span className='relative z-10 group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'>Resume</span>
@@ -80,7 +79,7 @@ const Home = () => {
               <svg className="w-4 h-4 -translate-y-[120%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-            </button>
+            </a>
           </div>
           <motion.div 
             variants={fadeIn('down', 0.4)} 
@@ -90,8 +89,9 @@ const Home = () => {
             className='hidden xl:flex items-center gap-6'
           >
             <ProjectsBtn />
-            <button
-              onClick={() => router.push('/download-resume')}
+            <a
+              href='/Adnan_Ayaz_Resume (2).pdf'
+              download='Adnan_Ayaz_Resume.pdf'
               className='btn rounded-full border border-white/50 px-8 text-sm tracking-wider transition-all duration-300 flex items-center justify-center gap-2 overflow-hidden hover:border-accent group relative cursor-pointer'
             >
               <span className='relative z-10 group-hover:-translate-y-[120%] group-hover:opacity-0 transition-all duration-500'>Resume</span>
@@ -99,7 +99,7 @@ const Home = () => {
               <svg className="w-4 h-4 -translate-y-[120%] opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 absolute z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-            </button>
+            </a>
           </motion.div>
         </div>
       </div>
