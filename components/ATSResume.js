@@ -4,7 +4,7 @@ const ATSResume = ({ resumeRef }) => {
       ref={resumeRef}
       style={{
         fontFamily: "'Inter', 'Segoe UI', system-ui, sans-serif",
-        color: '#1a1a1a',
+        color: '#000',
         lineHeight: 1.55,
         background: '#ffffff',
         padding: '44px 52px',
@@ -14,14 +14,14 @@ const ATSResume = ({ resumeRef }) => {
       }}
     >
       {/* Header */}
-      <header style={{ textAlign: 'center', marginBottom: '18px', paddingBottom: '14px', borderBottom: '2.5px solid #1a1a1a' }}>
+      <header style={{ textAlign: 'center', marginBottom: '18px', paddingBottom: '14px', borderBottom: '2.5px solid #000' }}>
         <h1 style={{ fontSize: '26px', fontWeight: 800, letterSpacing: '1.5px', margin: '0 0 6px 0', color: '#000', textTransform: 'uppercase' }}>
           Adnan Ayaz Khan
         </h1>
-        <div style={{ fontSize: '12.5px', color: '#333', fontWeight: 500, marginBottom: '8px', letterSpacing: '0.3px' }}>
+        <div style={{ fontSize: '12.5px', color: '#000', fontWeight: 500, marginBottom: '8px', letterSpacing: '0.3px' }}>
           Full Stack Engineer &bull; Next.js &bull; TypeScript &bull; Node.js &bull; AI Applications
         </div>
-        <div style={{ fontSize: '11px', color: '#555', lineHeight: 1.6 }}>
+        <div style={{ fontSize: '11px', color: '#222', lineHeight: 1.6 }}>
           Pakistan &nbsp;|&nbsp; adnanayaz479@gmail.com &nbsp;|&nbsp; +92 335 9740228
           <br />
           linkedin.com/in/adnan-ayaz-awan &nbsp;|&nbsp; github.com/AdnanAyaz1
@@ -30,7 +30,7 @@ const ATSResume = ({ resumeRef }) => {
 
       {/* Summary */}
       <Section title="Professional Summary">
-        <p style={{ margin: 0, color: '#333', lineHeight: 1.65, fontSize: '12px' }}>
+        <p style={{ margin: 0, color: '#111', lineHeight: 1.65, fontSize: '12px' }}>
           Full Stack Engineer with 2+ years shipping production SaaS platforms and AI-powered applications.
           Built multi-agent AI pipelines, client portals, dashboards, and payment systems for healthcare staffing
           and service booking platforms. Specialized in Next.js/TypeScript frontends with React, Redux Toolkit,
@@ -137,10 +137,10 @@ const ATSResume = ({ resumeRef }) => {
       <Section title="Education">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
           <div>
-            <span style={{ fontWeight: 700, fontSize: '12px', color: '#111' }}>Bachelor of Science — Computer Systems Engineering</span>
-            <span style={{ color: '#666', fontSize: '11.5px' }}> &nbsp;|&nbsp; University of Engineering &amp; Technology (UET) Peshawar</span>
+            <span style={{ fontWeight: 700, fontSize: '12px', color: '#000' }}>Bachelor of Science — Computer Systems Engineering</span>
+            <span style={{ color: '#222', fontSize: '11.5px' }}> &nbsp;|&nbsp; University of Engineering &amp; Technology (UET) Peshawar</span>
           </div>
-          <span style={{ color: '#555', fontSize: '11px', whiteSpace: 'nowrap' }}>2020 — 2024</span>
+          <span style={{ color: '#222', fontSize: '11px', whiteSpace: 'nowrap' }}>2020 — 2024</span>
         </div>
       </Section>
     </div>
@@ -156,7 +156,7 @@ const Section = ({ title, children }) => (
         textTransform: 'uppercase',
         letterSpacing: '2px',
         color: '#000',
-        borderBottom: '1.5px solid #d0d0d0',
+        borderBottom: '1.5px solid #000',
         paddingBottom: '4px',
         marginBottom: '10px',
         marginTop: 0,
@@ -169,44 +169,44 @@ const Section = ({ title, children }) => (
 );
 
 const SkillLabel = ({ text }) => (
-  <div style={{ fontWeight: 700, color: '#111', fontSize: '11.5px', paddingTop: '1px' }}>{text}</div>
+  <div style={{ fontWeight: 700, color: '#000', fontSize: '11.5px', paddingTop: '1px' }}>{text}</div>
 );
 
 const SkillValue = ({ text }) => (
-  <div style={{ color: '#444', fontSize: '11.5px' }}>{text}</div>
+  <div style={{ color: '#111', fontSize: '11.5px' }}>{text}</div>
 );
 
 const ExperienceItem = ({ role, company, location, date, bullets, stack }) => (
   <div style={{ marginBottom: '14px', pageBreakInside: 'avoid' }}>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '1px' }}>
       <div>
-        <span style={{ fontWeight: 700, fontSize: '12.5px', color: '#111' }}>{role}</span>
-        <span style={{ color: '#444', fontSize: '12px' }}> — {company}</span>
+        <span style={{ fontWeight: 700, fontSize: '12.5px', color: '#000' }}>{role}</span>
+        <span style={{ color: '#111', fontSize: '12px' }}> — {company}</span>
       </div>
-      <span style={{ color: '#555', fontSize: '11px', whiteSpace: 'nowrap' }}>{date}</span>
+      <span style={{ color: '#222', fontSize: '11px', whiteSpace: 'nowrap' }}>{date}</span>
     </div>
-    <div style={{ color: '#666', fontSize: '10.5px', marginBottom: '4px' }}>{location}</div>
+    <div style={{ color: '#333', fontSize: '10.5px', marginBottom: '4px' }}>{location}</div>
     <ul style={{ margin: '0 0 3px 0', paddingLeft: '15px' }}>
       {bullets.map((b, i) => (
-        <li key={i} style={{ color: '#333', fontSize: '11.5px', marginBottom: '2.5px', lineHeight: 1.55 }}>{b}</li>
+        <li key={i} style={{ color: '#111', fontSize: '11.5px', marginBottom: '2.5px', lineHeight: 1.55 }}>{b}</li>
       ))}
     </ul>
-    <div style={{ fontSize: '10.5px', color: '#666', fontStyle: 'italic' }}>Stack: {stack}</div>
+    <div style={{ fontSize: '10.5px', color: '#333', fontStyle: 'italic' }}>Stack: {stack}</div>
   </div>
 );
 
 const ProjectItem = ({ name, url, bullets, stack }) => (
   <div style={{ marginBottom: '12px', pageBreakInside: 'avoid' }}>
     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
-      <span style={{ fontWeight: 700, fontSize: '12px', color: '#111' }}>{name}</span>
-      {url && <span style={{ color: '#666', fontSize: '10.5px' }}>{url}</span>}
+      <span style={{ fontWeight: 700, fontSize: '12px', color: '#000' }}>{name}</span>
+      {url && <span style={{ color: '#333', fontSize: '10.5px' }}>{url}</span>}
     </div>
     <ul style={{ margin: '2px 0', paddingLeft: '15px' }}>
       {bullets.map((b, i) => (
-        <li key={i} style={{ color: '#333', fontSize: '11.5px', marginBottom: '2px', lineHeight: 1.55 }}>{b}</li>
+        <li key={i} style={{ color: '#111', fontSize: '11.5px', marginBottom: '2px', lineHeight: 1.55 }}>{b}</li>
       ))}
     </ul>
-    <div style={{ fontSize: '10.5px', color: '#666', fontStyle: 'italic' }}>Stack: {stack}</div>
+    <div style={{ fontSize: '10.5px', color: '#333', fontStyle: 'italic' }}>Stack: {stack}</div>
   </div>
 );
 
