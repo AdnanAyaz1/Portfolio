@@ -70,23 +70,23 @@ const ServiceSlider = () => {
         clickable: true,
       }}
       modules={[FreeModeModule, PaginationModule]}
-      className='h-[240px] sm:h-[340px]'
+      className='h-[340px] sm:h-[380px]'
     >
       {serviceData.map((item, index) => {
         return (
           <SwiperSlide key={index}>
-            <div className='bg-[rgba(65,47,123,0.15)] h-[300px] rounded-lg px-6 py-8 flex sm:flex-col gap-x-6 sm:gap-x-0 group cursor-pointer hover:bg-[rgba(89,65,169,0.15)] hover:scale-105 transition-all duration-300 ease-in-out'>
+            <div className='bg-[rgba(65,47,123,0.15)] h-full rounded-lg px-6 py-8 flex flex-col group cursor-pointer hover:bg-[rgba(89,65,169,0.15)] hover:scale-105 transition-all duration-300 ease-in-out'>
               {/* icon */}
               <div className='text-4xl text-accent mb-4'>{item.icon}</div>
               {/* title & desc */}
               <div className='flex-1'>
                 <div className='mb-2 text-lg group-hover:text-accent transition-colors duration-300'>{item.title}</div>
-                <p className='max-w-[350px] leading-normal line-clamp-4'>
+                <p className='max-w-[350px] leading-normal text-white/70'>
                   {item.description}
                 </p>
               </div>
               {/* arrow */}
-              <div className='text-3xl self-end transform group-hover:translate-x-2 transition-transform duration-300'>
+              <div className='text-3xl mt-4 transform group-hover:translate-x-2 transition-transform duration-300'>
                 <RxArrowTopRight className='group-hover:rotate-45 group-hover:text-accent transition-all duration-300' />
               </div>
             </div>

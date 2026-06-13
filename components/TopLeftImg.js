@@ -11,6 +11,7 @@ const TopLeftImg = () => {
         priority={true}
         quality={75}
         className='w-full h-full'
+        style={{ width: '100%', height: '100%' }}
         sizes="(max-width: 768px) 200px, 400px"
       />
     </div>

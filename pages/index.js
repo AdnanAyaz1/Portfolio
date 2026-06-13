@@ -1,25 +1,19 @@
-// components
 import Transition from '../components/Transition';
 import ProjectsBtn from '../components/ProjectsBtn';
 import Avatar from '../components/Avatar';
-import Image from 'next/image';
+import Head from 'next/head';
 import dynamic from 'next/dynamic';
 import { Suspense } from 'react';
 import Loading from '../components/Loading';
 
-// Dynamically import the heavy Particles component
 const ParticlesContainer = dynamic(() => import('../components/ParticlesContainer'), {
   ssr: false,
   loading: () => <Loading />
 });
 
-// framer motion
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
+import { staggerContainer, slideIn } from '../variants';
 
-// variants
-import { fadeIn } from '../variants';
-
-// typewriter effect
 const TypewriterComponent = dynamic(() => import('typewriter-effect'), {
   ssr: false
 });
@@ -27,47 +21,45 @@ const TypewriterComponent = dynamic(() => import('typewriter-effect'), {
 const Home = () => {
   return (
     <div className='bg-primary/60 h-full'>
+      <Head>
+        <title>Adnan Ayaz | Full Stack Developer - Next.js & AI Specialist</title>
+        <meta name="description" content="Full Stack Next.js Developer specializing in TypeScript, Tailwind CSS, AI integrations, and scalable web applications." />
+      </Head>
       <Suspense fallback={<Loading />}>
         <ParticlesContainer />
       </Suspense>
-      {/* text */}
       <div className='w-full h-full bg-gradient-to-r from-primary/10 via-black/30 to-black/10'>
-        <div className='text-center flex flex-col justify-center pt-16 sm:pt-28 xl:pt-40 xl:text-left h-full min-h-[100vh] sm:min-h-full pb-20 sm:pb-0 container mx-auto'>
-          {/* title */}
-          <motion.div
-            variants={fadeIn('down', 0.2)}
-            initial='hidden'
-            animate='show'
-            exit='hidden'
-            className='h1'>
+        <motion.div 
+          variants={staggerContainer}
+          initial='hidden'
+          animate='show'
+          className='text-center flex flex-col justify-center pt-16 sm:pt-28 xl:pt-40 xl:text-left h-full min-h-[100vh] sm:min-h-full pb-20 sm:pb-0 container mx-auto'
+        >
+          <motion.h1
+            variants={slideIn('up')}
+            className='h1'
+          >
             Hi, I'm{' '}
             <span className='text-accent'>
               <TypewriterComponent
                 options={{
-                  strings: [
-                    'Adnan Ayaz',
-                    'a Full Stack AI Dev',
-                    'a Next.js Expert',
-                    'a Backend Dev'
-                  ],
+                  strings: ['Adnan Ayaz', 'a Full Stack AI Dev', 'a Next.js Expert', 'a Backend Dev'],
                   autoStart: true,
                   loop: true,
                   delay: 50
                 }}
               />
             </span>
-          </motion.div>
-          {/* subtitle */}
+          </motion.h1>
+
           <motion.p 
-            variants={fadeIn('down', 0.3)} 
-            initial='hidden' 
-            animate='show' 
-            exit='hidden'
-            className='max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16'>
+            variants={slideIn('up')}
+            className='max-w-sm xl:max-w-xl mx-auto xl:mx-0 mb-10 xl:mb-16'
+          >
             Full Stack Next.js Developer with expertise in modern web technologies including TypeScript, Tailwind CSS, and backend systems. Specialized in building scalable and performant web applications.
           </motion.p>
-          {/* btns */}
-          <div className='flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center xl:hidden relative'>
+
+          <motion.div variants={slideIn('up')} className='flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center xl:hidden relative'>
             <ProjectsBtn />
             <a
               href='/Adnan_Ayaz_Resume (2).pdf'
@@ -80,14 +72,9 @@ const Home = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
             </a>
-          </div>
-          <motion.div 
-            variants={fadeIn('down', 0.4)} 
-            initial='hidden' 
-            animate='show' 
-            exit='hidden'
-            className='hidden xl:flex items-center gap-6'
-          >
+          </motion.div>
+
+          <motion.div variants={slideIn('up')} className='hidden xl:flex items-center gap-6'>
             <ProjectsBtn />
             <a
               href='/Adnan_Ayaz_Resume (2).pdf'
@@ -101,19 +88,14 @@ const Home = () => {
               </svg>
             </a>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
-      {/* image */}
       <div className='w-full max-w-[1200px] h-full absolute right-0 bottom-0 pointer-events-none overflow-hidden'>
-        <div className='bg-none xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0'>
-        </div>
-        {/* avatar */}
+        <div className='bg-none xl:bg-explosion xl:bg-cover xl:bg-right xl:bg-no-repeat w-full h-full absolute mix-blend-color-dodge translate-z-0'></div>
         <motion.div 
-          variants={fadeIn('up', 0.5)} 
-          initial='hidden' 
-          animate='show' 
-          exit='hidden'
-          transition={{ duration: 1, ease: 'easeInOut' }}
+          variants={slideIn('up', 0.3)}
+          initial='hidden'
+          animate='show'
           className='w-full h-full max-w-[min(737px,90vw)] max-h-[min(678px,90vh)] absolute bottom-0 right-0 lg:right-[8%]'
         >
           <Avatar />

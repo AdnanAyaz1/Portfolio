@@ -1,4 +1,3 @@
-// icons
 import {
   FaReact,
   FaNode,
@@ -31,18 +30,16 @@ import {
   SiOpenai,
 } from "react-icons/si";
 
-// components
 import Avatar from '../../components/Avatar';
 import Circles from '../../components/Circles';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { fadeIn } from '../../variants';
+import { motion } from 'motion/react';
+import { slideIn } from '../../variants';
 import CountUp from 'react-countup';
 import { useState } from 'react';
 import Transition from '../../components/Transition';
 import { HiArrowUpRight } from 'react-icons/hi2';
 
-//  data
 const aboutData = [
   {
     title: 'skills',
@@ -103,64 +100,28 @@ const aboutData = [
   {
     title: 'experience',
     info: [
-      {
-        title: 'Full Stack Developer - Product Box',
-        stage: '2025 - Present',
-      },
-      {
-        title: 'Full Stack Developer - Apptex Software Solutions',
-        stage: '2024 - 2025',
-      },
+      { title: 'Full Stack Developer - Product Box', stage: '2025 - Present' },
+      { title: 'Full Stack Developer - Apptex Software Solutions', stage: '2024 - 2025' },
     ],
   },
   {
     title: 'credentials',
     info: [
-      {
-        title: 'BSc in Computer Systems Engineering - UET Peshawar',
-        stage: '2020 - 2024',
-      }
+      { title: 'BSc in Computer Systems Engineering - UET Peshawar', stage: '2020 - 2024' }
     ],
   },
   {
     title: 'tools',
     info: [
-      {
-        title: 'Next.js & React',
-        description: 'Production SSR/SSG apps with App Router and React Server Components',
-      },
-      {
-        title: 'TypeScript',
-        description: 'End-to-end type safety across the full stack',
-      },
-      {
-        title: 'Tailwind CSS & shadcn/ui',
-        description: 'Design-system based, accessible UI development',
-      },
-      {
-        title: 'Node.js & Express',
-        description: 'REST APIs, middleware, and scalable backend services',
-      },
-      {
-        title: 'Prisma, Mongoose & Sequelize',
-        description: 'Type-safe ORM/ODM layers for SQL and NoSQL databases',
-      },
-      {
-        title: 'Redis & BullMQ',
-        description: 'Caching, pub/sub, and reliable background job queues',
-      },
-      {
-        title: 'Cron Jobs',
-        description: 'Scheduled tasks and automated recurring workflows',
-      },
-      {
-        title: 'OpenAI Integrations',
-        description: 'AI agents, RAG pipelines, and LLM-powered features',
-      },
-      {
-        title: 'Docker',
-        description: 'Containerized dev and production environments',
-      },
+      { title: 'Next.js & React', description: 'Production SSR/SSG apps with App Router and React Server Components' },
+      { title: 'TypeScript', description: 'End-to-end type safety across the full stack' },
+      { title: 'Tailwind CSS & shadcn/ui', description: 'Design-system based, accessible UI development' },
+      { title: 'Node.js & Express', description: 'REST APIs, middleware, and scalable backend services' },
+      { title: 'Prisma, Mongoose & Sequelize', description: 'Type-safe ORM/ODM layers for SQL and NoSQL databases' },
+      { title: 'Redis & BullMQ', description: 'Caching, pub/sub, and reliable background job queues' },
+      { title: 'Cron Jobs', description: 'Scheduled tasks and automated recurring workflows' },
+      { title: 'OpenAI Integrations', description: 'AI agents, RAG pipelines, and LLM-powered features' },
+      { title: 'Docker', description: 'Containerized dev and production environments' },
     ],
   },
 ];
@@ -168,151 +129,120 @@ const aboutData = [
 const About = () => {
   const [index, setIndex] = useState(0);
   return (
-    <div className='h-full bg-primary/30 py-16 sm:py-24 xl:py-32 text-center xl:text-left mb-24'>
+    <div className='min-h-full bg-primary/30 pt-16 sm:pt-24 xl:pt-32 pb-32 sm:pb-40 xl:pb-56 text-center xl:text-left'>
       <Transition />
       <div className='container mx-auto h-full flex flex-col items-center xl:flex-row gap-x-6'>
-        {/* text */}
         <div className='flex-1 flex flex-col justify-center'>
           <motion.h2 
-            variants={fadeIn('right', 0.2)}
+            variants={slideIn('right', 0.1)}
             initial='hidden'
             animate='show'
-            exit='hidden'
             className='h2'
           >
             Building <span className='text-accent'>modern</span> web experiences.
           </motion.h2>
           <motion.p 
-            variants={fadeIn('right', 0.4)}
+            variants={slideIn('right', 0.2)}
             initial='hidden'
             animate='show'
-            exit='hidden'
             className='max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0'
           >
             Full Stack Developer with 2+ years of experience building responsive, production-grade web applications using Next.js, TypeScript, and Tailwind CSS. Skilled in interactive UI, state management with Redux Toolkit and Zustand, and seamless backend API integration.
           </motion.p>
-          {/* counters */}
           <motion.div 
-            variants={fadeIn('right', 0.6)}
+            variants={slideIn('right', 0.3)}
             initial='hidden'
             animate='show'
-            exit='hidden'
             className='hidden md:flex md:max-w-xl xl:max-w-none mx-auto xl:mx-0 mb-8'
           >
             <div className='flex flex-1 xl:gap-x-6'>
-              {/* experience */}
               <div className='relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
                 <div className='text-2xl xl:text-4xl font-extrabold text-accent mb-2'>
                   <CountUp start={0} end={2} duration={5} /> +
                 </div>
-                <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>
-                  Years of experience
-                </div>
+                <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>Years of experience</div>
               </div>
-              {/* clients */}
               <div className='relative flex-1 after:w-[1px] after:h-full after:bg-white/10 after:absolute after:top-0 after:right-0'>
                 <div className='text-2xl xl:text-4xl font-extrabold text-accent mb-2'>
                   <CountUp start={0} end={50} duration={5} /> +
                 </div>
-                <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>
-                  Satisfied clients
-                </div>
+                <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>Satisfied clients</div>
               </div>
-              {/* projects */}
               <div className='relative flex-1'>
                 <div className='text-2xl xl:text-4xl font-extrabold text-accent mb-2'>
                   <CountUp start={0} end={10} duration={5} /> +
                 </div>
-                <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>
-                  Finished projects
-                </div>
+                <div className='text-xs uppercase tracking-[1px] leading-[1.4] max-w-[100px]'>Finished projects</div>
               </div>
             </div>
           </motion.div>
         </div>
-        {/* info */}
         <motion.div 
-          variants={fadeIn('left', 0.4)}
+          variants={slideIn('left', 0.2)}
           initial='hidden'
           animate='show'
-          exit='hidden'
           className='flex flex-col w-full xl:max-w-[48%] h-[480px]'
         >
           <div className='flex gap-x-2 sm:gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4 overflow-x-auto xl:overflow-visible whitespace-nowrap max-w-full px-2 scrollbar-none'>
-            {aboutData.map((item, itemIndex) => {
-              return (
-                <div
-                  key={itemIndex}
-                  className={`${
-                    index === itemIndex 
-                      ? 'text-accent after:w-[100%] after:bg-accent after:transition-all after:duration-300'
-                      : 'after:w-8 after:bg-white'
-                  } cursor-pointer capitalize text-sm sm:text-base xl:text-lg relative after:h-[2px] after:absolute after:-bottom-1 after:left-0`}
-                  onClick={() => setIndex(itemIndex)}
-                >
-                  {item.title}
-                </div>
-              );
-            })}
+            {aboutData.map((item, itemIndex) => (
+              <div
+                key={itemIndex}
+                className={`${
+                  index === itemIndex 
+                    ? 'text-accent after:w-[100%] after:bg-accent after:transition-all after:duration-300'
+                    : 'after:w-8 after:bg-white'
+                } cursor-pointer capitalize text-sm sm:text-base xl:text-lg relative after:h-[2px] after:absolute after:-bottom-1 after:left-0`}
+                onClick={() => setIndex(itemIndex)}
+              >
+                {item.title}
+              </div>
+            ))}
           </div>
           <div className='py-2 xl:py-6 flex flex-col gap-y-2 xl:gap-y-4 items-center xl:items-start px-2 overflow-y-auto scrollbar-none flex-1 min-h-0'>
-            {aboutData[index].info.map((item, itemIndex) => {
-              return (
-                <div
-                  key={itemIndex}
-                  className={`flex flex-col md:flex-row max-w-full ${item.description ? 'sm:max-w-[520px]' : 'sm:max-w-max'} gap-x-2 md:items-start text-white/60 text-center md:text-left shrink-0`}
-                >
-                  {item.icons ? (
-                    <>
-                      {/* title */}
-                      <div className='font-light mb-2 md:mb-0'>{item.title}</div>
-                      {/* icons */}
-                      <div className='flex items-center gap-x-2 md:gap-x-4'>
-                        <div className='hidden md:flex'>-</div>
-                        <div className='flex flex-wrap gap-4'>
-                          {item.icons.map((item, iconIndex) => {
-                            return (
-                              <div key={iconIndex} className='relative group/icon'>
-                                <div className='text-2xl text-white hover:text-accent transition-colors duration-300 cursor-default'>
-                                  {item.icon}
-                                </div>
-                                <div className='absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/10 rounded-md text-[11px] text-white/80 whitespace-nowrap opacity-0 pointer-events-none group-hover/icon:opacity-100 transition-opacity duration-200 z-50'>
-                                  {item.name}
-                                </div>
-                              </div>
-                            );
-                          })}
-                        </div>
+            {aboutData[index].info.map((item, itemIndex) => (
+              <div
+                key={itemIndex}
+                className={`flex flex-col md:flex-row max-w-full ${item.description ? 'sm:max-w-[520px]' : 'sm:max-w-max'} gap-x-2 md:items-start text-white/60 text-center md:text-left shrink-0`}
+              >
+                {item.icons ? (
+                  <>
+                    <div className='font-light mb-2 md:mb-0'>{item.title}</div>
+                    <div className='flex items-center gap-x-2 md:gap-x-4'>
+                      <div className='hidden md:flex'>-</div>
+                      <div className='flex flex-wrap gap-4'>
+                        {item.icons.map((icon, iconIndex) => (
+                          <div key={iconIndex} className='relative group/icon'>
+                            <div className='text-2xl text-white hover:text-accent transition-colors duration-300 cursor-default'>
+                              {icon.icon}
+                            </div>
+                            <div className='absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/10 rounded-md text-[11px] text-white/80 whitespace-nowrap opacity-0 pointer-events-none group-hover/icon:opacity-100 transition-opacity duration-200 z-50'>
+                              {icon.name}
+                            </div>
+                          </div>
+                        ))}
                       </div>
-                    </>
-                  ) : item.description ? (
-                    /* title + description (wraps naturally) */
-                    <div className='font-light'>
-                      <span className='text-white'>{item.title}</span>
-                      <span className='text-white/50'>{' \u2014 '}{item.description}</span>
                     </div>
-                  ) : (
-                    /* title + stage (wraps as a unit) */
-                    <div className='font-light'>
-                      {item.link ? (
-                        <Link
-                          href={item.link}
-                          className='group inline-flex items-center gap-1 text-white hover:text-accent transition-colors duration-300'
-                        >
-                          <span className='underline-offset-4 group-hover:underline'>{item.title}</span>
-                          <HiArrowUpRight className='text-xs opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300' />
-                        </Link>
-                      ) : (
-                        item.title
-                      )}
-                      {item.stage && (
-                        <span className='whitespace-nowrap'>{' \u2014 '}{item.stage}</span>
-                      )}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
+                  </>
+                ) : item.description ? (
+                  <div className='font-light'>
+                    <span className='text-white'>{item.title}</span>
+                    <span className='text-white/50'>{' \u2014 '}{item.description}</span>
+                  </div>
+                ) : (
+                  <div className='font-light'>
+                    {item.link ? (
+                      <Link href={item.link} className='group inline-flex items-center gap-1 text-white hover:text-accent transition-colors duration-300'>
+                        <span className='underline-offset-4 group-hover:underline'>{item.title}</span>
+                        <HiArrowUpRight className='text-xs opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300' />
+                      </Link>
+                    ) : (
+                      item.title
+                    )}
+                    {item.stage && <span className='whitespace-nowrap'>{' \u2014 '}{item.stage}</span>}
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>

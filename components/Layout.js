@@ -1,16 +1,11 @@
 // fonts
-import { Sora } from '@next/font/google';
+import { Sora } from 'next/font/google';
 import dynamic from 'next/dynamic';
-import { Suspense, useState } from 'react';
-import Loading from './Loading';
-import PremiumLoader from './PremiumLoader';
+import { useState, useEffect } from 'react';
 
-// Dynamically import components that are not needed immediately
-const Nav = dynamic(() => import('../components/Nav'), {
-  loading: () => <Loading />
-});
-
-const TopLeftImg = dynamic(() => import('../components/TopLeftImg'));
+const TopLeftImg = dynamic(() => import('../components/TopLeftImg'), { ssr: false });
+const Nav = dynamic(() => import('../components/Nav'), { ssr: false });
+const PremiumLoader = dynamic(() => import('../components/PremiumLoader'), { ssr: false });
 
 // font settings
 const sora = Sora({
@@ -22,6 +17,21 @@ const sora = Sora({
 
 const Layout = ({ children }) => {
   const [loaded, setLoaded] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <div className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative min-h-screen`}>
+        <div className="fixed inset-0 flex items-center justify-center bg-primary z-50">
+          <div className="w-16 h-16 border-4 border-accent border-t-transparent rounded-full animate-spin" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -29,11 +39,9 @@ const Layout = ({ children }) => {
       <div
         className={`page bg-site text-white bg-cover bg-no-repeat ${sora.variable} font-sora relative`}
       >
-        <Suspense fallback={<Loading />}>
-          <TopLeftImg />
-          <Nav />
-          {children}
-        </Suspense>
+        <TopLeftImg />
+        <Nav />
+        {children}
       </div>
     </>
   );

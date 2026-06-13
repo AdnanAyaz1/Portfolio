@@ -1,4 +1,3 @@
-// next image
 import Image from 'next/image';
 
 const Avatar = () => {
@@ -9,7 +8,8 @@ const Avatar = () => {
         width={737}
         height={678}
         alt='Developer Avatar'
-        className='translate-z-0 w-full h-auto max-w-full object-contain'
+        className='translate-z-0 w-full h-full max-w-full object-contain'
+        style={{ width: '100%', height: '100%' }}
         unoptimized={false}
         priority={true}
         quality={75}

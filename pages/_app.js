@@ -1,7 +1,7 @@
 import '../styles/globals.css';
 import Layout from '../components/Layout';
 import { useRouter } from 'next/router';
-import { AnimatePresence, motion, LazyMotion, domAnimation } from 'framer-motion';
+import { AnimatePresence, motion, LazyMotion, domAnimation } from 'motion/react';
 import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
@@ -9,13 +9,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <LazyMotion features={domAnimation}>
       <Head>
-        <link
-          rel="preload"
-          href="/fonts/your-font.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Layout>

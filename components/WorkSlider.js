@@ -12,6 +12,14 @@ import 'swiper/css/navigation';
 import { BsArrowRight } from 'react-icons/bs';
 
 const projectsData = {
+  "AI Projects": [
+    {
+      title: 'Agentic AI',
+      path: '/agentic-ai.png',
+      description: 'Multi-agent AI platform with 5 LLM agents for cafe business intelligence',
+      link: '/work/agentic-ai'
+    },
+  ],
   "Full-stack": [
     {
       title: 'Motoverse',
