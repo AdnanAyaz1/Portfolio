@@ -33,7 +33,7 @@ import {
 import Avatar from '../../components/Avatar';
 import Circles from '../../components/Circles';
 import Link from 'next/link';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { slideIn } from '../../variants';
 import CountUp from 'react-countup';
 import { useState } from 'react';
@@ -199,50 +199,61 @@ const About = () => {
             ))}
           </div>
           <div className='py-2 xl:py-6 flex flex-col gap-y-2 xl:gap-y-4 items-center xl:items-start px-2 overflow-y-auto scrollbar-none flex-1 min-h-0'>
-            {aboutData[index].info.map((item, itemIndex) => (
-              <div
-                key={itemIndex}
-                className={`flex flex-col md:flex-row max-w-full ${item.description ? 'sm:max-w-[520px]' : 'sm:max-w-max'} gap-x-2 md:items-start text-white/60 text-center md:text-left shrink-0`}
+            <AnimatePresence mode='wait'>
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                className='flex flex-col gap-y-2 xl:gap-y-4 items-center xl:items-start w-full'
               >
-                {item.icons ? (
-                  <>
-                    <div className='font-light mb-2 md:mb-0'>{item.title}</div>
-                    <div className='flex items-center gap-x-2 md:gap-x-4'>
-                      <div className='hidden md:flex'>-</div>
-                      <div className='flex flex-wrap gap-4'>
-                        {item.icons.map((icon, iconIndex) => (
-                          <div key={iconIndex} className='relative group/icon'>
-                            <div className='text-2xl text-white hover:text-accent transition-colors duration-300 cursor-default'>
-                              {icon.icon}
-                            </div>
-                            <div className='absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/10 rounded-md text-[11px] text-white/80 whitespace-nowrap opacity-0 pointer-events-none group-hover/icon:opacity-100 transition-opacity duration-200 z-50'>
-                              {icon.name}
-                            </div>
+                {aboutData[index].info.map((item, itemIndex) => (
+                  <div
+                    key={itemIndex}
+                    className={`flex flex-col md:flex-row max-w-full ${item.description ? 'sm:max-w-[520px]' : 'sm:max-w-max'} gap-x-2 md:items-start text-white/60 text-center md:text-left shrink-0`}
+                  >
+                    {item.icons ? (
+                      <>
+                        <div className='font-light mb-2 md:mb-0'>{item.title}</div>
+                        <div className='flex items-center gap-x-2 md:gap-x-4'>
+                          <div className='hidden md:flex'>-</div>
+                          <div className='flex flex-wrap gap-4'>
+                            {item.icons.map((icon, iconIndex) => (
+                              <div key={iconIndex} className='relative group/icon'>
+                                <div className='text-2xl text-white hover:text-accent transition-colors duration-300 cursor-default'>
+                                  {icon.icon}
+                                </div>
+                                <div className='absolute -top-9 left-1/2 -translate-x-1/2 px-2.5 py-1 bg-white/10 backdrop-blur-md border border-white/10 rounded-md text-[11px] text-white/80 whitespace-nowrap opacity-0 pointer-events-none group-hover/icon:opacity-100 transition-opacity duration-200 z-50'>
+                                  {icon.name}
+                                </div>
+                              </div>
+                            ))}
                           </div>
-                        ))}
+                        </div>
+                      </>
+                    ) : item.description ? (
+                      <div className='font-light'>
+                        <span className='text-white'>{item.title}</span>
+                        <span className='text-white/50'>{' \u2014 '}{item.description}</span>
                       </div>
-                    </div>
-                  </>
-                ) : item.description ? (
-                  <div className='font-light'>
-                    <span className='text-white'>{item.title}</span>
-                    <span className='text-white/50'>{' \u2014 '}{item.description}</span>
-                  </div>
-                ) : (
-                  <div className='font-light'>
-                    {item.link ? (
-                      <Link href={item.link} className='group inline-flex items-center gap-1 text-white hover:text-accent transition-colors duration-300'>
-                        <span className='underline-offset-4 group-hover:underline'>{item.title}</span>
-                        <HiArrowUpRight className='text-xs opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300' />
-                      </Link>
                     ) : (
-                      item.title
+                      <div className='font-light'>
+                        {item.link ? (
+                          <Link href={item.link} className='group inline-flex items-center gap-1 text-white hover:text-accent transition-colors duration-300'>
+                            <span className='underline-offset-4 group-hover:underline'>{item.title}</span>
+                            <HiArrowUpRight className='text-xs opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300' />
+                          </Link>
+                        ) : (
+                          item.title
+                        )}
+                        {item.stage && <span className='whitespace-nowrap'>{' \u2014 '}{item.stage}</span>}
+                      </div>
                     )}
-                    {item.stage && <span className='whitespace-nowrap'>{' \u2014 '}{item.stage}</span>}
                   </div>
-                )}
-              </div>
-            ))}
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </div>
         </motion.div>
       </div>
